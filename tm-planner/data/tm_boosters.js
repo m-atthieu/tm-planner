@@ -6580,7 +6580,7 @@ var tm_boosters = {
             x_pts: 1.35
         },
 		{   // LRR Pedro
-            id: 2348,
+            id: 2349,
             x_pts: 1.35
         },
 		{   // WJ Sanji
