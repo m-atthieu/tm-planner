@@ -6576,7 +6576,7 @@ var tm_boosters = {
             x_pts: 1.35
         },
 		{   // Legend Jack
-            id: 2338,
+            id: 2433,
             x_pts: 1.35
         },
 		{   // LRR Pedro
