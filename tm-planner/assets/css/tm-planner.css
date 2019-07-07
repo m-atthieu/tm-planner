@@ -1,0 +1,152 @@
+#help-info,
+#optc-db-info {
+    font-size: 13px;
+    padding: 5px;
+}
+
+#team-6-info,
+#multi-class-mode-label {
+    font-size: 10px;
+}
+
+:disabled {
+    cursor: not-allowed;
+}
+
+#server-setting-div {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.server-radio-div {
+    margin-left: 10px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.jpn-tm {
+    display: none;
+}
+
+.div_x,
+#div_1_2x_tm_rr,
+#div_1_2x_tm {
+    display: none;
+}
+
+#nakama-info {
+    margin-top: 20px;
+    padding: 5px;
+}
+
+@media (max-width: 768px) {
+    .col-margin > .col {
+        margin-bottom: 5px;
+    }
+}
+
+#unit-detail-class1,
+#unit-detail-class2 {
+    margin: 5px;
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+}
+
+.booster-info,
+.confirm-save,
+#unit-detail-captain-ability,
+#unit-detail-special,
+#unit-detail-sailor {
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.booster {
+    cursor: pointer;
+}
+
+.booster-div {
+    margin-bottom: 20px;
+    min-height: 40px;
+}
+
+#ambush-team {
+    display: none;
+}
+
+.team-slot,
+.ambush-team-slot {
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin: 1px;
+    background-image: url('/tm-planner/assets/img/add.png');
+    background-size: 100%;
+    cursor: pointer;
+}
+
+#add-button {
+    width: 40px;
+    height: 40px;
+    margin: 1px;
+    background-image: url('/tm-planner/assets/img/add.png');
+    background-size: 100%;
+    display: inline-block;
+}
+
+#help-button {
+    width: 100%;
+    margin: 5px;
+}
+
+.remove-button-el,
+.available-units-el,
+.units-in-team-el,
+.units-assigned-el,
+.unit-detail-el {
+    display: none;
+}
+
+.select-modal-unit {
+    margin: 1px;
+    cursor: pointer;
+}
+
+.assigned-dh {
+    cursor: pointer;
+}
+
+.assigned-dh > img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.booster-clone > img {
+    -webkit-filter: brightness(0.5);
+    filter: brightness(0.5);
+}
+
+#export-url-div,
+#read-only-button-div {
+    display: none;
+}
+
+.type-filtered,
+.class-filtered,
+.lb-filtered {
+    opacity: 0.3;
+}
+
+.class-decorate {
+    width: 13px;
+    height: 13px;
+    margin-right: 3px;
+    display: inline-block;
+    background-size: cover;
+}
+
+/* Overwrite Bootstrap */
+.badge {
+    font-size: inherit;
+}
