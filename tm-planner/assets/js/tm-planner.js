@@ -45,6 +45,14 @@ function getBoosters(tmId, server) {
         $('#div_1_5x').show();
         $('#div_1_35x').show();
         $('#div_1x').show();
+	} else if (server == 'glb' && tmId == 2362) {
+		// TM Nami
+		$('#div_2_2x').show();
+        $('#div_1_75x').show();
+        $('#div_1_5x').show();
+        $('#div_1_35x').show();
+		$('#div_1_1x').show();
+        $('#div_1x').show();
     } else if (server == 'glb' && tmId == 2137) {
         // TM Croc
         $('#div_2_25x').show();
@@ -189,8 +197,10 @@ function getBoosters(tmId, server) {
     var boosters = [];
     if (server === 'glb') {
         boosters = tm_boosters[tmId];
-        $('#div_1_2x_tm_rr').show();
-        $('#div_1_2x_tm').show();
+		if(tmId !== 2362) {
+			$('#div_1_2x_tm_rr').show();
+			$('#div_1_2x_tm').show();
+		}
     } else
         boosters = tm_boosters_jpn[tmId];
 

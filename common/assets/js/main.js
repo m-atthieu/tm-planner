@@ -69,6 +69,14 @@ function getThumb(thumbId) {
     if (thumbId === 5036 || thumbId === 3354)
         return 'tm-planner/assets/img/new-thumbs/5036.png';
 
+	// Special case for Legend Jack
+    //if (thumbId === 5036 || thumbId === 3354)
+    //    return 'tm-planner/assets/img/new-thumbs/5036.png';
+	
+	// Special case for Support Wanda
+    if (thumbId === 5037 || thumbId === 3355)
+        return 'tm-planner/assets/img/new-thumbs/5037.png';
+	
     // Special cases for new thumbs
     if (
         thumbId === 9999
