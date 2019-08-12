@@ -7032,36 +7032,36 @@ var tm_boosters = {
 
     // ========== Smoothie & Oven ==========
     2469: [
+        {   // Cracker
+            id: 2465,
+            x_pts: 2.2
+        },
+        {   // Jinbe
+            id: 2466,
+            x_pts: 2
+        },
+        {   // Pound
+            id: 2467,
+            x_pts: 1.75
+        },
+        {   // Unevolved Cracker
+            id: 2464,
+            x_pts: 1.5
+        },
         {   // Sanji & Judge
             id: 2446,
-            x_pts: 1.35
-        },
-        {   // Ichiji v2
-            id: 2447,
-            x_pts: 1.35
+            x_pts: 1.5
         },
         {   // Ichiji v2 5+
             id: 2448,
-            x_pts: 1.35
-        },
-        {   // Niji v2
-            id: 2449,
             x_pts: 1.35
         },
         {   // Niji v2 5+
             id: 2450,
             x_pts: 1.35
         },
-        {   // Yonji v2
-            id: 2451,
-            x_pts: 1.35
-        },
         {   // Yonji v2 5+
             id: 2452,
-            x_pts: 1.35
-        },
-        {   // Reiju v2
-            id: 2453,
             x_pts: 1.35
         },
         {   // Reiju v2 5+
@@ -7083,6 +7083,61 @@ var tm_boosters = {
         {   // Young Big Mom
             id: 2381,
             x_pts: 1.35
+        },
+        {   // Smoothie & Oven
+            id: 2469,
+            x_pts: 1.35
+        },
+        {   // LRR Pudding STR
+            id: 2213,
+            x_pts: 1.35
+        },
+        {   // LRR Pudding QCK
+            id: 3361,
+            x_pts: 1.35
+        },
+        {   // LRR Rebecca
+            id: 2191,
+            x_pts: 1.35
+        },
+        {   // Neo Vergo
+            id: 3359,
+            x_pts: 1.35
+        },
+        {   // Carrot
+            id: 2338,
+            type: 'legend',
+            x_pts: 1.2
+        },
+        {   // Shirahoshi 6+
+            id: 2631,
+            type: 'legend',
+            x_pts: 1.2
+        },
+        {   // Snakeman 6+
+            id: 2363,
+            type: 'legend',
+            x_pts: 1.2
+        },
+        {   // V2 Katakuri
+            id: 2365,
+            type: 'legend',
+            x_pts: 1.2
+        },
+        {   // DEX Sabo
+            id: 2441,
+            type: 'legend',
+            x_pts: 1.2
+        },
+        {   // V2 Sanji
+            id: 2148,
+            type: 'legend',
+            x_pts: 1.2
+        },
+        {   // Brook
+            id: 2236,
+            type: 'legend',
+            x_pts: 1.2
         },
         {   // LRR Judge
             id: 2287,
@@ -7111,6 +7166,46 @@ var tm_boosters = {
         },
         {   // Cavalier Reiju
             id: 2587,
+            type: 'rr',
+            x_pts: 1.2
+        },
+        {   // V2 Ichiji
+            id: 2447,
+            type: 'rr',
+            x_pts: 1.2
+        },
+        {   // V2 Niji
+            id: 2449,
+            type: 'rr',
+            x_pts: 1.2
+        },
+        {   // V2 Yonji
+            id: 2451,
+            type: 'rr',
+            x_pts: 1.2
+        },
+        {   // V2 Reiju
+            id: 2453,
+            type: 'rr',
+            x_pts: 1.2
+        },
+        {   // LRR Pudding
+            id: 2212,
+            type: 'rr',
+            x_pts: 1.2
+        },
+        {   // LRR Franky
+            id: 2463,
+            type: 'rr',
+            x_pts: 1.2
+        },
+        {   // Mont-d'Or
+            id: 2369,
+            type: 'rr',
+            x_pts: 1.2
+        },
+        {   // Gastino
+            id: 2306,
             type: 'rr',
             x_pts: 1.2
         },
@@ -7214,6 +7309,16 @@ var tm_boosters = {
             type: 'coliseum',
             x_pts: 1.2
         },
+        {   // Capone
+            id: 1016,
+            type: 'coliseum',
+            x_pts: 1.2
+        },
+        {   // Hina
+            id: 804,
+            type: 'coliseum',
+            x_pts: 1.2
+        },
         {   // Tea Party Luffy
             id: 1463,
             type: 'fortnight',
@@ -7231,6 +7336,76 @@ var tm_boosters = {
         },
         {   // Tea Party Brook
             id: 1516,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Summer Reiju
+            id: 2215,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Summer Conis
+            id: 2217,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Summer Nami
+            id: 681,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Summer Robin
+            id: 683,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Summer Perona
+            id: 685,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Summer Bonney
+            id: 1199,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Summer Violet
+            id: 1201,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Summer Nami V2
+            id: 1709,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Summer Robin V2
+            id: 1711,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Inu
+            id: 2219,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Neko
+            id: 2177,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Pizza Nami
+            id: 2089,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Pizza Chopper
+            id: 2093,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Kimono Jinbe
+            id: 885,
             type: 'fortnight',
             x_pts: 1.2
         },
@@ -7261,38 +7436,31 @@ var tm_boosters = {
         },
         {   // Sabo
             id: 1972,
-            type: 'tm',
-            x_pts: 1.2
+            x_pts: 1.1
         },
         {   // Sanji & Zoro
             id: 2000,
-            type: 'tm',
-            x_pts: 1.2
+            x_pts: 1.1
         },
         {   // Kizaru
             id: 2064,
-            type: 'tm',
-            x_pts: 1.2
+            x_pts: 1.1
         },
         {   // Big Mom
             id: 2109,
-            type: 'tm',
-            x_pts: 1.2
+            x_pts: 1.1
         },
         {   // Croc
             id: 2137,
-            type: 'tm',
-            x_pts: 1.2
+            x_pts: 1.1
         },
         {   // Jack
             id: 2175,
-            type: 'tm',
-            x_pts: 1.2
+            x_pts: 1.1
         },
         {   // Eneru
             id: 2211,
-            type: 'tm',
-            x_pts: 1.2
+            x_pts: 1.1
         },
         {   // Shanks
             id: 2261,
@@ -7301,13 +7469,11 @@ var tm_boosters = {
         },
         {   // Boa Hancock
             id: 2299,
-            type: 'tm',
-            x_pts: 1.2
+            x_pts: 1.1
         },
         {   // Law
             id: 2336,
-            type: 'tm',
-            x_pts: 1.2
+            x_pts: 1.1
         },
         {   // Kaido
             id: 2387,
