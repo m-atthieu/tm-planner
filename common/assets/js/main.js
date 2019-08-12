@@ -103,8 +103,30 @@ function createImgHtml(imgSrc, size, floatLeft) {
     return imgHtml;
 }
 
+function nightModeToggle(nightMode) {
+    if (nightMode) {
+        $('body').addClass('night-mode');
+    } else {
+        $('body').removeClass('night-mode');
+    }
+
+    localStorage.setItem('night-mode', nightMode);
+}
+
 $(document).ready(function() {
-    $('body').addClass('night-mode');
+    // Day / Night mode
+    var nightMode = false;
+    if (localStorage.getItem('night-mode') != null) {
+        var nightModeStr = localStorage.getItem('night-mode');
+        nightMode = nightModeStr == 'true';
+    }
+
+    nightModeToggle(nightMode);
+
+    $('#night-mode-check').click(function() {
+        nightMode = !nightMode;
+        nightModeToggle(nightMode);
+    });
 
     $('#header').load('/common/header.html', function() {
         if (typeof highlightNavbar !== 'undefined')
