@@ -104,6 +104,8 @@ function createImgHtml(imgSrc, size, floatLeft) {
 }
 
 $(document).ready(function() {
+    $('body').addClass('night-mode');
+
     $('#header').load('/common/header.html', function() {
         if (typeof highlightNavbar !== 'undefined')
             highlightNavbar();
