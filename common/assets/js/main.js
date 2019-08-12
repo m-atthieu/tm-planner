@@ -31,57 +31,61 @@ function getThumb(thumbId) {
 
     // Special case for Lucci v2 6+
     if (thumbId === 5016 || thumbId === 3336)
-        return 'tm-planner/assets/img/new-thumbs/5016.png';
+        return '/tm-planner/assets/img/new-thumbs/5016.png';
 
     // Special case for Knight Zoro
     if (thumbId === 5019 || thumbId === 3343)
-        return 'tm-planner/assets/img/new-thumbs/5019.png';
+        return '/tm-planner/assets/img/new-thumbs/5019.png';
 
     // Special case for Knight Sanji
     if (thumbId === 5020 || thumbId === 3344)
-        return 'tm-planner/assets/img/new-thumbs/5020.png';
+        return '/tm-planner/assets/img/new-thumbs/5020.png';
 
     // Special case for Shanks & Mihawk
     if (thumbId === 5024 || thumbId === 3342)
-        return 'tm-planner/assets/img/new-thumbs/5024.png';
+        return '/tm-planner/assets/img/new-thumbs/5024.png';
 
     // Special case for Whitebeard v2
     if (thumbId === 5026 || thumbId === 3346)
-        return 'tm-planner/assets/img/new-thumbs/5026.png';
+        return '/tm-planner/assets/img/new-thumbs/5026.png';
 
     // Special case for Garp (N)
     if (thumbId === 5028 || thumbId === 3340)
-        return 'tm-planner/assets/img/new-thumbs/5028.png';
+        return '/tm-planner/assets/img/new-thumbs/5028.png';
 
     // Special case for Log Vivi
     if (thumbId === 5030 || thumbId === 3348)
-        return 'tm-planner/assets/img/new-thumbs/5030.png';
+        return '/tm-planner/assets/img/new-thumbs/5030.png';
 
     // Special case for Log Ace
     if (thumbId === 5032 || thumbId === 3350)
-        return 'tm-planner/assets/img/new-thumbs/5032.png';
+        return '/tm-planner/assets/img/new-thumbs/5032.png';
 
     // Special case for Ivankov (N)
     if (thumbId === 5034 || thumbId === 3352)
-        return 'tm-planner/assets/img/new-thumbs/5034.png';
+        return '/tm-planner/assets/img/new-thumbs/5034.png';
 
     // Special case for YWB (N)
     if (thumbId === 5036 || thumbId === 3354)
-        return 'tm-planner/assets/img/new-thumbs/5036.png';
+        return '/tm-planner/assets/img/new-thumbs/5036.png';
 
-	// Special case for Legend Jack
-    //if (thumbId === 5036 || thumbId === 3354)
-    //    return 'tm-planner/assets/img/new-thumbs/5036.png';
-	
-	// Special case for Support Wanda
+    // Special case for Ranking Wanda
     if (thumbId === 5037 || thumbId === 3355)
-        return 'tm-planner/assets/img/new-thumbs/5037.png';
-	
+        return 'https://onepiece-treasurecruise.com/en/wp-content/uploads/sites/2/f5037.png';
+
+    // Special case for Nightmare Luffy (N)
+    if (thumbId === 5043 || thumbId === 3357)
+        return '/tm-planner/assets/img/new-thumbs/5043.png';
+
+    // Special case for Vergo (N)
+    if (thumbId === 5045 || thumbId === 3359)
+        return '/tm-planner/assets/img/new-thumbs/5045.png';
+
     // Special cases for new thumbs
     if (
         thumbId === 9999
     )
-        return 'tm-planner/assets/img/new-thumbs/' + thumbId + '.png';
+        return '/tm-planner/assets/img/new-thumbs/' + thumbId + '.png';
 
     return 'https://onepiece-treasurecruise.com/wp-content/uploads/f' + paddedThumbId + '.png';
 }

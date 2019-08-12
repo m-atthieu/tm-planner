@@ -28,6 +28,9 @@ function getBoosters(tmId, server) {
     // Reset
     $('.booster').remove();
 
+    $('#info_1_2x_main').show();
+    $('#info_1_2x_alt').hide();
+
     // Change 2x or 2.25x version
     $('.div_x').hide();
     if (
@@ -45,14 +48,6 @@ function getBoosters(tmId, server) {
         $('#div_1_5x').show();
         $('#div_1_35x').show();
         $('#div_1x').show();
-	} else if (server == 'glb' && tmId == 2362) {
-		// TM Nami
-		$('#div_2_2x').show();
-        $('#div_1_75x').show();
-        $('#div_1_5x').show();
-        $('#div_1_35x').show();
-		$('#div_1_1x').show();
-        $('#div_1x').show();
     } else if (server == 'glb' && tmId == 2137) {
         // TM Croc
         $('#div_2_25x').show();
@@ -69,7 +64,8 @@ function getBoosters(tmId, server) {
             tmId == 2261 ||
             tmId == 2299 ||
             tmId == 2336 ||
-            tmId == 2387
+            tmId == 2387 ||
+            tmId == 2469
         )
     ) {
         // TM Jack
@@ -79,10 +75,19 @@ function getBoosters(tmId, server) {
         // TM Hancock
         // TM Law
         // TM Kaido
+        // TM Smoothie & Oven
         $('#div_2x').show();
         $('#div_1_75x').show();
         $('#div_1_5x').show();
         $('#div_1_35x').show();
+        $('#div_1x').show();
+    } else if (server == 'glb' && tmId == 2362) {
+        // TM Nami
+        $('#div_2_2x').show();
+        $('#div_1_75x').show();
+        $('#div_1_5x').show();
+        $('#div_1_35x').show();
+        $('#div_1_1x').show();
         $('#div_1x').show();
     } else if (server == 'jpn' && tmId == 2064) {
         // TM Kizaru
@@ -180,14 +185,34 @@ function getBoosters(tmId, server) {
         $('#div_1_35x_v2').show();
         $('#div_1_3x').show();
         $('#div_1_25x_v2').show();
-    } else if (server == 'jpn' && tmId == 2583) {
+    } else if (
+        server == 'jpn' &&
+        (
+            tmId == 2583 ||
+            tmId == 2618
+        )
+    ) {
         // TM Lucci
+        // TM Sakazuki & Issho
         $('#div_2_25x').show();
         $('#div_1_8x').show();
         $('#div_1_6x').show();
         $('#div_1_4x_v2').show();
         $('#div_1_3x').show();
         $('#div_1_25x_v3').show();
+    } else if (server == 'jpn' && tmId == 2659) {
+        // TM Smoker
+        $('#div_2x').show();
+        $('#div_1_8x').show();
+        $('#div_1_6x').show();
+        $('#div_1_4x_v2').show();
+        $('#div_1_35x_v2').show();
+        $('#div_1_3x').show();
+        $('#div_1_25x_v3').show();
+        $('#div_1_25x_v4').show();
+
+        $('#info_1_2x_main').hide();
+        $('#info_1_2x_alt').show();
     } else {
         $('#div_2x').show();
         $('#div_1_5x').show();
@@ -197,10 +222,12 @@ function getBoosters(tmId, server) {
     var boosters = [];
     if (server === 'glb') {
         boosters = tm_boosters[tmId];
-		if(tmId !== 2362) {
-			$('#div_1_2x_tm_rr').show();
-			$('#div_1_2x_tm').show();
-		}
+        $('#div_1_2x_tm_rr').show();
+
+        if (tmId !== 2362)
+            $('#div_1_2x_tm').show();
+        else
+            $('#div_1_2x_tm').hide();
     } else
         boosters = tm_boosters_jpn[tmId];
 
@@ -408,7 +435,8 @@ function init(tmId, server) {
         tmId == 2336 ||
         tmId == 2387 ||
         tmId == 2469 ||
-        tmId == 2557
+        tmId == 2557 ||
+        tmId == 2659
     ) {
         $('#ambush-team').show();
         $('#first-team').removeClass('offset-md-1');
