@@ -365,7 +365,7 @@ function getOpponents(tmId, server) {
             } else {
                 var opPosDiv = $('#op-' + (opPos + 1));
             }
-            console.log(opPosDiv);
+
             var opPosTeam = opPosDiv.closest('.team');
 
             if (Array.isArray(opName) && Array.isArray(opType)) {
