@@ -16,7 +16,7 @@ function getUrlParameter(sParam) {
 
     for (var i = 0; i < sURLVariables.length; i++) {
         var sParameterName = sURLVariables[i].split('=');
-
+        console.log(sParameterName);
         if (sParameterName[0] === sParam)
             return sParameterName[1] === undefined ? true : sParameterName[1];
     }
@@ -914,6 +914,7 @@ $(document).ready(function() {
     var tmId = 0;
 
     if (getUrlParameter('transfer')) {
+        console.log();
         // Check Transfer link
         tmId = getUrlParameter('tmId');
         var serverTmp = getUrlParameter('server');
