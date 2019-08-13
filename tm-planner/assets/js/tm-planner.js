@@ -11,6 +11,7 @@ function createTooltip(imgDiv, text) {
 }
 
 function getUrlParameter(sParam) {
+    console.log(window.location);
     var sPageURL = decodeURIComponent(window.location.search.substring(1));
     var sURLVariables = sPageURL.split('&');
 
