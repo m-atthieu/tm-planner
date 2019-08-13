@@ -262,13 +262,12 @@ a[0]++}h.sigBytes=4*c;return h}});g.PBKDF2=function(d,b,e){return n.create(e).co
         var invalidPassEl = document.getElementById('invalidPass');
         var successEl = document.getElementById('success');
         var contentFrame = document.getElementById('contentFrame');
-        $.getJSON('http://ip-api.com/json', function(data){
-            /*var hash = CryptoJS.SHA1(data.city + data.region + data.postal).toString(CryptoJS.enc.Base64);
+        $.getJSON('http://ipinfo.io', function(data){
+            var hash = CryptoJS.SHA1(data.city + data.region + data.postal).toString(CryptoJS.enc.Base64);
             if(localStorage.getItem('trustedUser') === hash) {
                 passEl.value = 'bandaisuccmyween';
                 doSubmit();
-            }*/
-            console.log(data);
+            }
         });
 
         
