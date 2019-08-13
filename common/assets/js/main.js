@@ -118,6 +118,7 @@ $(document).ready(function() {
     var nightMode = false;
     if (localStorage.getItem('night-mode') != null) {
         var nightModeStr = localStorage.getItem('night-mode');
+        $('#night-mode-check').prop('checked', nightModeStr === 'true' ? true : false);
         nightMode = nightModeStr == 'true';
     }
 
