@@ -360,8 +360,12 @@ function getOpponents(tmId, server) {
             var opName = op[0];
             var opType = op[1];
             var opPos = op[2];
-
-            var opPosDiv = $('#op-' + (opPos + 1));
+            if(tmId === 2469 && server === 'glb') {
+                var opPosDiv = $('#op-latest-' + (opPos + 1));
+            } else {
+                var opPosDiv = $('#op-' + (opPos + 1));
+            }
+            console.log(opPosDiv);
             var opPosTeam = opPosDiv.closest('.team');
 
             if (Array.isArray(opName) && Array.isArray(opType)) {
@@ -391,21 +395,31 @@ function getOpponents(tmId, server) {
             var opType = op[1];
 
             if (Array.isArray(opName) && Array.isArray(opType)) {
-                $('#op-' + (i + 1)).empty();
+                if(tmId === 2469 && server === 'glb') {
+                    $('#op-latest-' + (i + 1)).empty();
+                } else {
+                    $('#op-' + (i + 1)).empty();
+                }
 
                 for (var j = 0; j < opName.length && j < opType.length; j++) {
                     var opHtml= $('<span></span>');
                     opHtml.html(opName[j]);
                     opHtml.addClass(opType[j]);
-
-                    $('#op-' + (i + 1)).append(opHtml);
+                    if(tmId === 2469 && server === 'glb') {
+                        $('#op-latest-' + (i + 1)).append(opHtml);
+                    } else {
+                        $('#op-' + (i + 1)).append(opHtml);
+                    }
                 }
             } else {
                 var opHtml = $('<span></span>');
                 opHtml.html(opName);
                 opHtml.addClass(opType);
-
-                $('#op-' + (i + 1)).html(opHtml);
+                if(tmId === 2469 && server === 'glb') {
+                    $('#op-latest-' + (i + 1)).html(opHtml);
+                } else {
+                    $('#op-' + (i + 1)).html(opHtml);
+                }
             }
         }
     }
@@ -422,6 +436,15 @@ function init(tmId, server) {
     if (!getBoosters(tmId, server)) {
         alert('Invalid TM or Server');
         return false;
+    }
+
+    //Hide Tooltips unless latest Global TM
+    if(tmId === 2469 && server === 'glb') {
+        $('.tooltip').show();
+        $('.no-tooltip').hide();
+    } else {
+        $('.tooltip').hide();
+        $('.no-tooltip').show();
     }
 
     if (!getOpponents(tmId, server)) {
@@ -907,8 +930,11 @@ $(document).ready(function() {
 
                         var op = opponents[opId];
                         var opPos = op[2];
-
-                        var opPosDiv = $('#op-' + (opPos + 1));
+                        if(tmId === 2469 && server === 'glb') {
+                            var opPosDiv = $('#op-latest-' + (opPos + 1));
+                        } else {
+                            var opPosDiv = $('#op-' + (opPos + 1));
+                        }
                         var opPosTeam = opPosDiv.closest('.team');
                         var teamNum = opPosTeam.data('team');
 
@@ -1310,8 +1336,11 @@ $(document).ready(function() {
 
                     if (team && op) {
                         var opPos = op[2];
-
-                        var opPosDiv = $('#op-' + (opPos + 1));
+                        if(tmId === 2469 && server === 'glb') {
+                            var opPosDiv = $('#op-latest' + (opPos + 1));
+                        } else {
+                            var opPosDiv = $('#op-' + (opPos + 1));
+                        }
                         var opPosTeam = opPosDiv.closest('.team');
                         var teamNum = opPosTeam.data('team');
 
@@ -1529,6 +1558,7 @@ $(document).ready(function() {
         classFilters = [];
         $('.class-filter').removeClass('selected');
         $('.class-filtered').removeClass('class-filtered');
+        logicalOrClassMode = false;
     });
 
     $('#or-class-mode-checkbox').click(function() {
@@ -1540,6 +1570,7 @@ $(document).ready(function() {
             $('.class-filter').removeClass('selected');
             $('.class-filtered').removeClass('class-filtered');
         }
+        multiClassMode = false;
     });
 
     $('.class-filter').click(function() {
