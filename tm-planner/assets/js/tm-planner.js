@@ -909,7 +909,7 @@ $(document).ready(function() {
     }
 
     var tmId = 0;
-    console.log(getUrlParameter('transfer'));
+
     if (getUrlParameter('transfer')) {
         // Check Transfer link
         tmId = getUrlParameter('tmId');
@@ -1029,7 +1029,7 @@ $(document).ready(function() {
             }
 
             var dontHaveStr = getUrlParameter('dont-have');
-            console.log(dontHaveStr);
+
             if (dontHaveStr) {
                 var dontHaves = dontHaveStr.split(',');
 
@@ -1448,7 +1448,7 @@ $(document).ready(function() {
 
     // Export url
     $('#export-url-button').click(function() {
-        var url = 'https://flashmercurymcfly.github.io/tm-planner/';
+        var url = 'https://' + window.location.hostname + window.location.pathname;
         url += '?transfer=true';
         url += '&tmId=' + tmId;
         url += '&server=' + server;
