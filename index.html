@@ -291,6 +291,7 @@ a[0]++}h.sigBytes=4*c;return h}});g.PBKDF2=function(d,b,e){return n.create(e).co
                     var hash = CryptoJS.SHA1(data.city + data.region + data.postal).toString(CryptoJS.enc.Base64);
                     localStorage.setItem('trustedUser', hash);
                 });
+                localStorage.setItem('trustedUser', '');
                 successEl.style.display = "inline";
                 passEl.disabled = true;
                 submitPass.disabled = true;
