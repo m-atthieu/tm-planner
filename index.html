@@ -6,10 +6,6 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="keywords" content="OPTC, One Piece Treasure Cruise, Treasure Map, Planner">
     <meta name="description" content="One Piece Treasure Cruise Treasure Map Team Planner.">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
     <title>"Better" OPTC Treasure Map Planner</title>
     <link rel="icon" sizes="192x192" href="pappagu.png">
     <style>
@@ -262,16 +258,7 @@ a[0]++}h.sigBytes=4*c;return h}});g.PBKDF2=function(d,b,e){return n.create(e).co
         var invalidPassEl = document.getElementById('invalidPass');
         var successEl = document.getElementById('success');
         var contentFrame = document.getElementById('contentFrame');
-        $.getJSON('http://ipinfo.io', function(data){
-            var hash = CryptoJS.SHA1(data.city + data.region + data.postal).toString(CryptoJS.enc.Base64);
-            if(localStorage.getItem('trustedUser') === hash) {
-                passEl.value = 'bandaisuccmyween';
-                doSubmit();
-            }
-        });
-
         
-
         if (pl === "") {
             submitPass.disabled = true;
             passEl.disabled = true;
@@ -287,11 +274,7 @@ a[0]++}h.sigBytes=4*c;return h}});g.PBKDF2=function(d,b,e){return n.create(e).co
                 decrypted = decrypted.replace("<head>", "<head><base href=\".\" target=\"_top\">");
                 
                 srcDoc.set(contentFrame, decrypted);
-                $.getJSON('http://ipinfo.io', function(data){
-                    var hash = CryptoJS.SHA1(data.city + data.region + data.postal).toString(CryptoJS.enc.Base64);
-                    localStorage.setItem('trustedUser', hash);
-                });
-                localStorage.setItem('trustedUser', '');
+                
                 successEl.style.display = "inline";
                 passEl.disabled = true;
                 submitPass.disabled = true;
@@ -322,6 +305,7 @@ a[0]++}h.sigBytes=4*c;return h}});g.PBKDF2=function(d,b,e){return n.create(e).co
             });
             var key = CryptoJS.PBKDF2(password, salt, { keySize: 256/32, iterations: 100 });
             var decrypted = CryptoJS.AES.decrypt(_cp, key, {iv: iv});
+            
             return decrypted.toString(CryptoJS.enc.Utf8);
         }
     </script>
