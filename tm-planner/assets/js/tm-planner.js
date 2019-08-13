@@ -1472,6 +1472,8 @@ $(document).ready(function() {
         $('.not-read-only').prop('disabled', false);
     });
 
+    var typeFilters = [];
+
     // Type filter
     $('.type-filter').click(function() {
         var filter = $(this).data('filter');
@@ -1479,19 +1481,24 @@ $(document).ready(function() {
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected');
             $('.type-filtered').removeClass('type-filtered');
+            typeFilters.splice(typeFilters.indexOf(filter), 1);
         } else {
-            $('.type-filter').removeClass('selected');
             $(this).addClass('selected');
-
+            typeFilters.push(filter);
+        }
+        
+        if(typeFilters.length > 0) {
             $('.booster, .booster-clone').each(function() {
                 var unitType = $(this).data('type');
+                
                 if (Array.isArray(unitType)) {
-                    if (unitType.indexOf(filter) == -1)
+                    if (typeFilters.indexOf(unitType[0]) === -1 && typeFilters.indexOf(unitType[1]) === -1) 
                         $(this).addClass('type-filtered');
-                    else
+                    else 
                         $(this).removeClass('type-filtered');
+                    
                 } else {
-                    if ($(this).data('type') !== filter)
+                    if (typeFilters.indexOf($(this).data('type')) === -1)
                         $(this).addClass('type-filtered');
                     else
                         $(this).removeClass('type-filtered');
@@ -1503,10 +1510,14 @@ $(document).ready(function() {
     // Class filter
     var classFilters = [];
     var multiClassMode = false;
+    var logicalOrClassMode = false;
 
     // Multi Class mode
     createTooltip($('#multi-class-mode-label'),
         "Select units for Captain Abilities benefiting from multiple classes, e.g. Katakuri, Carrot (Disables 2 Classes restriction)");
+
+        createTooltip($('#or-class-mode-label'),
+        "Enable class filtering to show all units that have at least one of the selected classes");
 
     $('#multi-class-mode-checkbox').click(function() {
         if ($(this).prop('checked'))
@@ -1520,10 +1531,21 @@ $(document).ready(function() {
         $('.class-filtered').removeClass('class-filtered');
     });
 
+    $('#or-class-mode-checkbox').click(function() {
+        if ($(this).prop('checked'))
+            logicalOrClassMode = true;
+        else {
+            logicalOrClassMode = false;
+            classFilters = [];
+            $('.class-filter').removeClass('selected');
+            $('.class-filtered').removeClass('class-filtered');
+        }
+    });
+
     $('.class-filter').click(function() {
         var filter = $(this).data('filter');
 
-        if (multiClassMode) {
+        if (multiClassMode || logicalOrClassMode) {
             if ($(this).hasClass('selected')) {
                 $(this).removeClass('selected');
                 classFilters.splice(classFilters.indexOf(filter), 1);
@@ -1556,29 +1578,54 @@ $(document).ready(function() {
                 var unitClass1 = $(this).data('class1');
                 var unitClass2 = $(this).data('class2');
 
-                if (unitClass2) {
-                    // Units with 2 Classes
-                    if (classFilters.length > 1) {
-                        if (classFilters.indexOf(unitClass1) == -1 || classFilters.indexOf(unitClass2) == -1)
-                            $(this).addClass('class-filtered');
-                        else
-                            $(this).removeClass('class-filtered');
+                if(logicalOrClassMode) {
+                    if (unitClass2) {
+                        if (classFilters.length > 1) {
+                            if (classFilters.indexOf(unitClass1) == -1 && classFilters.indexOf(unitClass2) == -1)
+                                $(this).addClass('class-filtered');
+                            else
+                                $(this).removeClass('class-filtered');
+                        } else {
+                            if (unitClass1 !== classFilters[0] && unitClass2 !== classFilters[0])
+                                $(this).addClass('class-filtered');
+                            else
+                                $(this).removeClass('class-filtered');
+                        }
                     } else {
-                        if (unitClass1 !== classFilters[0] && unitClass2 !== classFilters[0])
+                        if (classFilters.length > 1) {
                             $(this).addClass('class-filtered');
-                        else
-                            $(this).removeClass('class-filtered');
+                        } else {
+                            if (unitClass1 !== classFilters[0])
+                                $(this).addClass('class-filtered');
+                            else
+                                $(this).removeClass('class-filtered');
+                        }
                     }
                 } else {
-                    // Units with only 1 Class
-                    if (classFilters.length > 1) {
-                        // Disqualify units with 1 Class if 2 Class Filters are selected
-                        $(this).addClass('class-filtered');
+                    if (unitClass2) {
+                        // Units with 2 Classes
+                        if (classFilters.length > 1) {
+                            if (classFilters.indexOf(unitClass1) == -1 || classFilters.indexOf(unitClass2) == -1)
+                                $(this).addClass('class-filtered');
+                            else
+                                $(this).removeClass('class-filtered');
+                        } else {
+                            if (unitClass1 !== classFilters[0] && unitClass2 !== classFilters[0])
+                                $(this).addClass('class-filtered');
+                            else
+                                $(this).removeClass('class-filtered');
+                        }
                     } else {
-                        if (unitClass1 !== classFilters[0])
+                        // Units with only 1 Class
+                        if (classFilters.length > 1) {
+                            // Disqualify units with 1 Class if 2 Class Filters are selected
                             $(this).addClass('class-filtered');
-                        else
-                            $(this).removeClass('class-filtered');
+                        } else {
+                            if (unitClass1 !== classFilters[0])
+                                $(this).addClass('class-filtered');
+                            else
+                                $(this).removeClass('class-filtered');
+                        }
                     }
                 }
             });
