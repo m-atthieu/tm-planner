@@ -861,14 +861,12 @@ function doSave(tmId, server) {
         $('.team:visible').each(function() {
             var opId = $(this).data('op_id');
             var team = getTeamUnits($(this));
-
             teams[opId] = team;
         });
     } else {
         $('.team:visible').each(function() {
             var team_num = $(this).data('team');
             var team = getTeamUnits($(this));
-
             teams[team_num] = team;
         });
     }
@@ -1335,11 +1333,7 @@ $(document).ready(function() {
 
                     if (team && op) {
                         var opPos = op[2];
-                        if(tmId === 2469 && server === 'glb') {
-                            var opPosDiv = $('#op-latest' + (opPos + 1));
-                        } else {
-                            var opPosDiv = $('#op-' + (opPos + 1));
-                        }
+                        var opPosDiv = $('#op-' + (opPos + 1));
                         var opPosTeam = opPosDiv.closest('.team');
                         var teamNum = opPosTeam.data('team');
 
