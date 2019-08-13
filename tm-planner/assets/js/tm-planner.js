@@ -16,7 +16,6 @@ function getUrlParameter(sParam) {
 
     for (var i = 0; i < sURLVariables.length; i++) {
         var sParameterName = sURLVariables[i].split('=');
-        console.log(sParameterName);
         if (sParameterName[0] === sParam)
             return sParameterName[1] === undefined ? true : sParameterName[1];
     }
@@ -914,7 +913,6 @@ $(document).ready(function() {
     var tmId = 0;
 
     if (getUrlParameter('transfer')) {
-        console.log();
         // Check Transfer link
         tmId = getUrlParameter('tmId');
         var serverTmp = getUrlParameter('server');
@@ -938,7 +936,7 @@ $(document).ready(function() {
                         }
                         var opPosTeam = opPosDiv.closest('.team');
                         var teamNum = opPosTeam.data('team');
-
+                        
                         if (opPos != 5) {
                             // Regular Teams
                             for (var i = 0; i < team.length; i++) {
@@ -1062,7 +1060,7 @@ $(document).ready(function() {
         }
 
         // Reset browser url
-        history.replaceState('', '', '/tm-planner/');
+        //history.replaceState('', '', '/tm-planner/');
     } else {
         // Retrieve TM ID
         tmId = getUrlParameter('tmId');
