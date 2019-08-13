@@ -1616,14 +1616,10 @@ $(document).ready(function() {
                                 $(this).removeClass('class-filtered');
                         }
                     } else {
-                        if (classFilters.length > 1) {
+                        if (classFilters.indexOf(unitClass1) == -1)
                             $(this).addClass('class-filtered');
-                        } else {
-                            if (unitClass1 !== classFilters[0])
-                                $(this).addClass('class-filtered');
-                            else
-                                $(this).removeClass('class-filtered');
-                        }
+                        else
+                            $(this).removeClass('class-filtered');
                     }
                 } else {
                     if (unitClass2) {
