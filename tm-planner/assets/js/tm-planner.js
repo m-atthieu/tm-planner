@@ -11,8 +11,7 @@ function createTooltip(imgDiv, text) {
 }
 
 function getUrlParameter(sParam) {
-    console.log(window.location);
-    var sPageURL = decodeURIComponent(window.location.search.substring(1));
+    var sPageURL = decodeURIComponent(window.parent.location.search.substring(1));
     var sURLVariables = sPageURL.split('&');
 
     for (var i = 0; i < sURLVariables.length; i++) {
@@ -1449,7 +1448,7 @@ $(document).ready(function() {
 
     // Export url
     $('#export-url-button').click(function() {
-        var url = 'https://' + window.location.hostname + window.location.pathname;
+        var url = 'https://' + window.parent.location.hostname + window.parent.location.pathname;
         url += '?transfer=true';
         url += '&tmId=' + tmId;
         url += '&server=' + server;
