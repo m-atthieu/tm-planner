@@ -7189,11 +7189,6 @@ var tm_boosters = {
             type: 'rr',
             x_pts: 1.2
         },
-        {   // LRR Pudding
-            id: 2212,
-            type: 'rr',
-            x_pts: 1.2
-        },
         {   // LRR Franky
             id: 2463,
             type: 'rr',
