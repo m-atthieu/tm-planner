@@ -391,6 +391,9 @@ function getOpponents(tmId, server) {
             var opName = op[0];
             var opType = op[1];
 
+            $('#tooltip-' + (i + 1)).find('.tooltiptext').empty();
+            $('#tooltip-' + (i + 1)).append(bossInfo[i][1]);
+
             if (Array.isArray(opName) && Array.isArray(opType)) {
                 $('#op-' + (i + 1)).empty();
 
@@ -510,7 +513,6 @@ function decorateStr(str) {
 
 function populateUnitDetail(unitId) {
     var unitDetail = details[unitId];
-    console.log(unitDetail);
 
     if (unitDetail) {
         // Thumb
