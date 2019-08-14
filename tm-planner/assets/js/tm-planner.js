@@ -265,7 +265,7 @@ function getBoosters(tmId, server) {
         limitAttackTooltip = limitAttackTooltip + units[b.id - 1][13];
         limitRecoveryTooltip = limitRecoveryTooltip + units[b.id - 1][14];
         
-        createTooltip(imgDiv, '<span class="tooltip-title">' + units[b.id - 1][0] + '</span><br/>' +
+        createTooltip(imgDiv, '<span>' + units[b.id - 1][0] + '</span><br/>' +
         '<span class="tooltip-title">HP:</span> ' + limitHealthTooltip + '<br/>'+
         '<span class="tooltip-title">ATK:</span> ' + limitAttackTooltip + '<br/>'+
         '<span class="tooltip-title">RCV:</span> ' + limitRecoveryTooltip + '<br/>' +
@@ -753,7 +753,7 @@ function populateUnitModal(src, selectedId, assigned) {
             limitAttackTooltip = limitAttackTooltip + units[unitId - 1][13];
             limitRecoveryTooltip = limitRecoveryTooltip + units[unitId - 1][14];
             
-            createTooltip(imgDiv, '<span class="tooltip-title">' + units[unitId - 1][0] + '</span><br/>' +
+            createTooltip(imgDiv, '<span>' + units[unitId - 1][0] + '</span><br/>' +
             '<span class="tooltip-title">HP:</span> ' + limitHealthTooltip + '<br/>'+
             '<span class="tooltip-title">ATK:</span> ' + limitAttackTooltip + '<br/>'+
             '<span class="tooltip-title">RCV:</span> ' + limitRecoveryTooltip + '<br/>' +
@@ -795,7 +795,7 @@ function populateUnitModal(src, selectedId, assigned) {
                 limitAttackTooltip = limitAttackTooltip + units[b.id - 1][13];
                 limitRecoveryTooltip = limitRecoveryTooltip + units[b.id - 1][14];
                 
-                createTooltip(imgDiv, '<span class="tooltip-title">' + units[b.id - 1][0] + '</span><br/>' +
+                createTooltip(imgDiv, '<span>' + units[b.id - 1][0] + '</span><br/>' +
                 '<span class="tooltip-title">HP:</span> ' + limitHealthTooltip + '<br/>'+
                 '<span class="tooltip-title">ATK:</span> ' + limitAttackTooltip + '<br/>'+
                 '<span class="tooltip-title">RCV:</span> ' + limitRecoveryTooltip + '<br/>' +
@@ -841,7 +841,7 @@ function populateUnitModal(src, selectedId, assigned) {
                 limitAttackTooltip = limitAttackTooltip + units[unitId - 1][13];
                 limitRecoveryTooltip = limitRecoveryTooltip + units[unitId - 1][14];
                 
-                createTooltip(imgDiv, '<span class="tooltip-title">' + units[unitId - 1][0] + '</span><br/>' +
+                createTooltip(imgDiv, '<span>' + units[unitId - 1][0] + '</span><br/>' +
                 '<span class="tooltip-title">HP:</span> ' + limitHealthTooltip + '<br/>'+
                 '<span class="tooltip-title">ATK:</span> ' + limitAttackTooltip + '<br/>'+
                 '<span class="tooltip-title">RCV:</span> ' + limitRecoveryTooltip + '<br/>' +
