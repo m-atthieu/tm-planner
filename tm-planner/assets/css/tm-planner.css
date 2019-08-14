@@ -186,7 +186,7 @@
     transition: opacity 0.3s;
 }
 
-.tooltip .tooltiptext::after {
+.tooltip-boss .tooltiptext::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -197,7 +197,7 @@
     border-color: #555 transparent transparent transparent;
 }
 
-.tooltip:hover .tooltiptext {
+.tooltip-boss:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
 }
