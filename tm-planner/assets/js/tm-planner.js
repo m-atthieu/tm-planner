@@ -1776,26 +1776,45 @@ $(document).ready(function() {
         } else {
             $('.booster, .booster-clone').each(function() {
                 var unitSpecial = details[$(this).data('id')].special;
-                $(this).addClass('special-filtered');
+                var specialMatches = [];
 
+                $(this).addClass('special-filtered');
+                
                 if(Array.isArray(unitSpecial)) {
                     for(var matcher in matchers) {
                         for(var sp in unitSpecial) {
                             if(unitSpecial[sp].description.match(matchers[matcher].matcher) && specialFilters.indexOf(matchers[matcher].name) !== -1){
-                                $(this).removeClass('special-filtered');
-                                break;
+                                if(specialFilters.length > 1) {
+                                    specialMatches.push(matchers[matcher].name);
+                                    console.log();
+                                    if(specialFilters.filter(value => specialMatches.includes(value)).length === specialFilters.length) {
+                                        $(this).removeClass('special-filtered');
+                                        break;
+                                    }
+                                } else {
+                                    $(this).removeClass('special-filtered');
+                                    break;
+                                }
                             }
                         }
-                        
                     }
                 } else {
                     for(var matcher in matchers) {
                         if(unitSpecial.match(matchers[matcher].matcher) && specialFilters.indexOf(matchers[matcher].name) !== -1){
-                            $(this).removeClass('special-filtered');
-                            break;
+                            if(specialFilters.length > 1) {
+                                specialMatches.push(matchers[matcher].name);
+                                if(specialFilters.filter(value => specialMatches.includes(value)).length === specialFilters.length) {
+                                    $(this).removeClass('special-filtered');
+                                    break;
+                                }
+                            } else {
+                                $(this).removeClass('special-filtered');
+                                break;
+                            }
                         }
                     }
                 }
+                
             });
         }
     });
