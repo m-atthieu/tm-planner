@@ -61,7 +61,8 @@
 .confirm-save,
 #unit-detail-captain-ability,
 #unit-detail-special,
-#unit-detail-sailor {
+#unit-detail-sailor,
+#unit-detail-swap {
     font-size: 13px;
     margin-bottom: 10px;
 }

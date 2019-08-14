@@ -345,6 +345,7 @@ function getOpponents(tmId, server) {
     $('#thumb-div').empty();
 
     var opponents = tm_opponents[tmId];
+    var bossInfo = tm_boss_info[tmId];
 
     // JPN TM Kizaru special case
     if (tmId == 2064 && server == 'jpn')
@@ -359,13 +360,11 @@ function getOpponents(tmId, server) {
             var opName = op[0];
             var opType = op[1];
             var opPos = op[2];
-            if(tmId === 2469 && server === 'glb') {
-                var opPosDiv = $('#op-latest-' + (opPos + 1));
-            } else {
-                var opPosDiv = $('#op-' + (opPos + 1));
-            }
-
+            var opPosDiv = $('#op-' + (opPos + 1));
             var opPosTeam = opPosDiv.closest('.team');
+
+            $('#tooltip-' + (opponents[opId][2] + 1)).find('.tooltiptext').empty();
+            $('#tooltip-' + (opponents[opId][2] + 1)).append(bossInfo[opId][2]);
 
             if (Array.isArray(opName) && Array.isArray(opType)) {
                 opPosDiv.empty();
@@ -374,7 +373,6 @@ function getOpponents(tmId, server) {
                     var opHtml= $('<span></span>');
                     opHtml.html(opName[j]);
                     opHtml.addClass(opType[j]);
-
                     opPosDiv.append(opHtml);
                 }
             } else {
@@ -394,31 +392,19 @@ function getOpponents(tmId, server) {
             var opType = op[1];
 
             if (Array.isArray(opName) && Array.isArray(opType)) {
-                if(tmId === 2469 && server === 'glb') {
-                    $('#op-latest-' + (i + 1)).empty();
-                } else {
-                    $('#op-' + (i + 1)).empty();
-                }
+                $('#op-' + (i + 1)).empty();
 
                 for (var j = 0; j < opName.length && j < opType.length; j++) {
                     var opHtml= $('<span></span>');
                     opHtml.html(opName[j]);
                     opHtml.addClass(opType[j]);
-                    if(tmId === 2469 && server === 'glb') {
-                        $('#op-latest-' + (i + 1)).append(opHtml);
-                    } else {
-                        $('#op-' + (i + 1)).append(opHtml);
-                    }
+                    $('#op-' + (i + 1)).append(opHtml);
                 }
             } else {
                 var opHtml = $('<span></span>');
                 opHtml.html(opName);
                 opHtml.addClass(opType);
-                if(tmId === 2469 && server === 'glb') {
-                    $('#op-latest-' + (i + 1)).html(opHtml);
-                } else {
-                    $('#op-' + (i + 1)).html(opHtml);
-                }
+                $('#op-' + (i + 1)).html(opHtml);
             }
         }
     }
@@ -435,15 +421,6 @@ function init(tmId, server) {
     if (!getBoosters(tmId, server)) {
         alert('Invalid TM or Server');
         return false;
-    }
-
-    //Hide Tooltips unless latest Global TM
-    if(tmId === 2469 && server === 'glb') {
-        $('.tooltip').show();
-        $('.no-tooltip').hide();
-    } else {
-        $('.tooltip').hide();
-        $('.no-tooltip').show();
     }
 
     if (!getOpponents(tmId, server)) {
@@ -533,6 +510,7 @@ function decorateStr(str) {
 
 function populateUnitDetail(unitId) {
     var unitDetail = details[unitId];
+    console.log(unitDetail);
 
     if (unitDetail) {
         // Thumb
@@ -684,6 +662,20 @@ function populateUnitDetail(unitId) {
             }
         } else
             $('#unit-detail-sailor').html('None');
+
+
+        //Swap
+        var swap = unitDetail.swap;
+        if(swap) {
+            $('#unit-detail-swap-title').html('Swap');
+            $('#unit-detail-swap').empty();
+
+            swap = decorateStr(swap);
+            $('#unit-detail-swap').html(swap);
+        } else {
+            $('#unit-detail-swap-title').html('');
+            $('#unit-detail-swap').html('');
+        }
 
         $('#db-button').data('id', unitId);
         $('.unit-detail-el').show();
@@ -944,11 +936,7 @@ $(document).ready(function() {
 
                         var op = opponents[opId];
                         var opPos = op[2];
-                        if(tmId === 2469 && server === 'glb') {
-                            var opPosDiv = $('#op-latest-' + (opPos + 1));
-                        } else {
-                            var opPosDiv = $('#op-' + (opPos + 1));
-                        }
+                        var opPosDiv = $('#op-' + (opPos + 1));
                         var opPosTeam = opPosDiv.closest('.team');
                         var teamNum = opPosTeam.data('team');
                         
