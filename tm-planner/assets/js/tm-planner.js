@@ -7,6 +7,7 @@ function createTooltip(imgDiv, text) {
     imgDiv.data('toggle', 'tooltip');
     imgDiv.data('placement', 'top');
     imgDiv.attr('title', text);
+    imgDiv.data('html', true);
     imgDiv.tooltip();
 }
 
@@ -248,9 +249,28 @@ function getBoosters(tmId, server) {
         imgDiv.addClass('booster');
         imgDiv.data('id', b.id);
         imgDiv.data('x_pts', b.x_pts);
-
-        // Name in tooltip
-        createTooltip(imgDiv, units[b.id - 1][0]);
+        // Info in tooltip
+        var limitCdTooltip = 0;
+        var limitHealthTooltip = 0;
+        var limitAttackTooltip = 0;
+        var limitRecoveryTooltip = 0;
+        for(var x in details[b.id].limit) {
+            if (details[b.id].limit[x].description.includes("Boosts base HP by ")) limitHealthTooltip += parseInt(details[b.id].limit[x].description.substring(18), 10);
+            if (details[b.id].limit[x].description.includes("Boosts base ATK by ")) limitAttackTooltip += parseInt(details[b.id].limit[x].description.substring(19), 10);
+            if (details[b.id].limit[x].description.includes("Boosts base RCV by ")) limitRecoveryTooltip += parseInt(details[b.id].limit[x].description.substring(19), 10);
+            if (details[b.id].limit[x].description.includes("Reduce base Special Cooldown by ")) limitCdTooltip += parseInt(details[b.id].limit[x].description.substring(32, 33), 10);
+        }
+        limitCdTooltip = Math.abs(limitCdTooltip - cooldowns[b.id - 1][1]);
+        limitHealthTooltip = limitHealthTooltip + units[b.id - 1][12];
+        limitAttackTooltip = limitAttackTooltip + units[b.id - 1][13];
+        limitRecoveryTooltip = limitRecoveryTooltip + units[b.id - 1][14];
+        
+        createTooltip(imgDiv, '<span class="tooltip-title">' + units[b.id - 1][0] + '</span><br/>' +
+        '<span class="tooltip-title">HP:</span> ' + limitHealthTooltip + '<br/>'+
+        '<span class="tooltip-title">ATK:</span> ' + limitAttackTooltip + '<br/>'+
+        '<span class="tooltip-title">RCV:</span> ' + limitRecoveryTooltip + '<br/>' +
+        '<span class="tooltip-title">CD:</span> ' + limitCdTooltip +
+        '');
 
         // Type and Class
         imgDiv.data('type', units[b.id - 1][1]);
@@ -717,9 +737,28 @@ function populateUnitModal(src, selectedId, assigned) {
             imgDiv.append(createImgHtml(getThumb(unitId), 40, false));
             imgDiv.data('id', unitId);
             imgDiv.data('src', src);
-
             // Name in tooltip
-            createTooltip(imgDiv, units[unitId - 1][0]);
+            var limitCdTooltip = 0;
+            var limitHealthTooltip = 0;
+            var limitAttackTooltip = 0;
+            var limitRecoveryTooltip = 0;
+            for(var x in details[unitId].limit) {
+                if (details[unitId].limit[x].description.includes("Boosts base HP by ")) limitHealthTooltip += parseInt(details[unitId].limit[x].description.substring(18), 10);
+                if (details[unitId].limit[x].description.includes("Boosts base ATK by ")) limitAttackTooltip += parseInt(details[unitId].limit[x].description.substring(19), 10);
+                if (details[unitId].limit[x].description.includes("Boosts base RCV by ")) limitRecoveryTooltip += parseInt(details[unitId].limit[x].description.substring(19), 10);
+                if (details[unitId].limit[x].description.includes("Reduce base Special Cooldown by ")) limitCdTooltip += parseInt(details[unitId].limit[x].description.substring(32, 33), 10);
+            }
+            limitCdTooltip = Math.abs(limitCdTooltip - cooldowns[unitId - 1][1]);
+            limitHealthTooltip = limitHealthTooltip + units[unitId - 1][12];
+            limitAttackTooltip = limitAttackTooltip + units[unitId - 1][13];
+            limitRecoveryTooltip = limitRecoveryTooltip + units[unitId - 1][14];
+            
+            createTooltip(imgDiv, '<span class="tooltip-title">' + units[unitId - 1][0] + '</span><br/>' +
+            '<span class="tooltip-title">HP:</span> ' + limitHealthTooltip + '<br/>'+
+            '<span class="tooltip-title">ATK:</span> ' + limitAttackTooltip + '<br/>'+
+            '<span class="tooltip-title">RCV:</span> ' + limitRecoveryTooltip + '<br/>' +
+            '<span class="tooltip-title">CD:</span> ' + limitCdTooltip +
+            '');
 
             imgDiv.addClass('select-modal-unit');
             imgDiv.css('display', 'inline-block');
@@ -741,7 +780,27 @@ function populateUnitModal(src, selectedId, assigned) {
                 imgDiv.data('src', src);
 
                 // Name in tooltip
-                createTooltip(imgDiv, units[unitId - 1][0]);
+                var limitCdTooltip = 0;
+                var limitHealthTooltip = 0;
+                var limitAttackTooltip = 0;
+                var limitRecoveryTooltip = 0;
+                for(var x in details[b.id].limit) {
+                    if (details[b.id].limit[x].description.includes("Boosts base HP by ")) limitHealthTooltip += parseInt(details[b.id].limit[x].description.substring(18), 10);
+                    if (details[b.id].limit[x].description.includes("Boosts base ATK by ")) limitAttackTooltip += parseInt(details[b.id].limit[x].description.substring(19), 10);
+                    if (details[b.id].limit[x].description.includes("Boosts base RCV by ")) limitRecoveryTooltip += parseInt(details[b.id].limit[x].description.substring(19), 10);
+                    if (details[b.id].limit[x].description.includes("Reduce base Special Cooldown by ")) limitCdTooltip += parseInt(details[b.id].limit[x].description.substring(32, 33), 10);
+                }
+                limitCdTooltip = Math.abs(limitCdTooltip - cooldowns[b.id - 1][1]);
+                limitHealthTooltip = limitHealthTooltip + units[b.id - 1][12];
+                limitAttackTooltip = limitAttackTooltip + units[b.id - 1][13];
+                limitRecoveryTooltip = limitRecoveryTooltip + units[b.id - 1][14];
+                
+                createTooltip(imgDiv, '<span class="tooltip-title">' + units[b.id - 1][0] + '</span><br/>' +
+                '<span class="tooltip-title">HP:</span> ' + limitHealthTooltip + '<br/>'+
+                '<span class="tooltip-title">ATK:</span> ' + limitAttackTooltip + '<br/>'+
+                '<span class="tooltip-title">RCV:</span> ' + limitRecoveryTooltip + '<br/>' +
+                '<span class="tooltip-title">CD:</span> ' + limitCdTooltip +
+                '');
 
                 imgDiv.addClass('select-modal-unit');
                 imgDiv.addClass('is-clone');
@@ -767,7 +826,27 @@ function populateUnitModal(src, selectedId, assigned) {
                 imgDiv.data('src', src);
 
                 // Name in tooltip
-                createTooltip(imgDiv, units[unitId - 1][0]);
+                var limitCdTooltip = 0;
+                var limitHealthTooltip = 0;
+                var limitAttackTooltip = 0;
+                var limitRecoveryTooltip = 0;
+                for(var x in details[unitId].limit) {
+                    if (details[unitId].limit[x].description.includes("Boosts base HP by ")) limitHealthTooltip += parseInt(details[unitId].limit[x].description.substring(18), 10);
+                    if (details[unitId].limit[x].description.includes("Boosts base ATK by ")) limitAttackTooltip += parseInt(details[unitId].limit[x].description.substring(19), 10);
+                    if (details[unitId].limit[x].description.includes("Boosts base RCV by ")) limitRecoveryTooltip += parseInt(details[unitId].limit[x].description.substring(19), 10);
+                    if (details[unitId].limit[x].description.includes("Reduce base Special Cooldown by ")) limitCdTooltip += parseInt(details[unitId].limit[x].description.substring(32, 33), 10);
+                }
+                limitCdTooltip = Math.abs(limitCdTooltip - cooldowns[unitId - 1][1]);
+                limitHealthTooltip = limitHealthTooltip + units[unitId- 1][12];
+                limitAttackTooltip = limitAttackTooltip + units[unitId - 1][13];
+                limitRecoveryTooltip = limitRecoveryTooltip + units[unitId - 1][14];
+                
+                createTooltip(imgDiv, '<span class="tooltip-title">' + units[unitId - 1][0] + '</span><br/>' +
+                '<span class="tooltip-title">HP:</span> ' + limitHealthTooltip + '<br/>'+
+                '<span class="tooltip-title">ATK:</span> ' + limitAttackTooltip + '<br/>'+
+                '<span class="tooltip-title">RCV:</span> ' + limitRecoveryTooltip + '<br/>' +
+                '<span class="tooltip-title">CD:</span> ' + limitCdTooltip +
+                '');
 
                 imgDiv.addClass('select-modal-unit');
                 imgDiv.css('display', 'inline-block');
