@@ -1,3 +1,5 @@
+//TM Boss HP increases 10% per nav level
+//TM Boss Attack increases 5% per nav level
 var tm_boss_info = {
     1808: [
         ['Moria', '<span class="tooltiptext">TBD</span>'],
