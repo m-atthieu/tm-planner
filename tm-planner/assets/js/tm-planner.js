@@ -1568,6 +1568,42 @@ $(document).ready(function() {
         $('#export-url-div').show();
     });
 
+    // Export url to original TM Planner
+    $('#export-url-orig-button').click(function() {
+        var url = 'https://lukforce.bitbucket.io/tm-planner/';
+        url += '?transfer=true';
+        url += '&tmId=' + tmId;
+        url += '&server=' + server;
+
+        if ((tmId > 1889 && server == 'glb') || (tmId > 2064 && server == 'jpn')) {
+            $('.team:visible').each(function() {
+                var opId = $(this).data('op_id');
+                var team = getTeamUnits($(this));
+
+                url += '&op' + opId + '=' + team.join();
+            });
+        } else {
+            $('.team:visible').each(function() {
+                var team_num = $(this).data('team');
+                var team = getTeamUnits($(this));
+
+                url += '&team' + team_num + '=' + team.join();
+            });
+        }
+
+        var dontHaves = [];
+
+        $('#dont-have').find('.booster').each(function() {
+            dontHaves.push($(this).data('id'));
+        });
+
+        if (dontHaves.length > 0)
+            url += '&dont-have=' + dontHaves.join();
+
+        $('#export-url-link').val(url);
+        $('#export-url-div').show();
+    });
+
     // Copy export url
     $('#copy-url-button').click(function() {
         $('#export-url-link').select();
