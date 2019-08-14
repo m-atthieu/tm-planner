@@ -609,6 +609,13 @@ function populateUnitDetail(unitId) {
 
         // Special
         var special = unitDetail.special;
+        var cdArray = cooldowns[unitId - 1];
+        var limitCd = 0;
+
+        for(var x in unitDetail.limit) {
+            if (unitDetail.limit[x].description.includes("Reduce base Special Cooldown by ")) limitCd += parseInt(unitDetail.limit[x].description.substring(32, 33), 10);
+        }
+
         if (special) {
             if (Array.isArray(special)) {
                 var specialMax = special[special.length - 1].description;
@@ -617,6 +624,16 @@ function populateUnitDetail(unitId) {
             } else {
                 special = decorateStr(special);
                 $('#unit-detail-special').html(special);
+            }
+
+            $('#unit-detail-special').append('<br />');
+            $('#unit-detail-special').append('<b>Cooldown:</b> ' + cdArray[0] + ' -> ' + cdArray[1]);
+            if(limitCd > 0) {
+                var limitCdMin = cdArray[0] - limitCd;
+                var limitCdMax = cdArray[1] - limitCd;
+
+                $('#unit-detail-special').append('<br />');
+                $('#unit-detail-special').append('<b>Cooldown After LB:</b> ' + limitCdMin + ' -> ' + limitCdMax);
             }
         } else
             $('#unit-detail-special').html('None');
