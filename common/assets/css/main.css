@@ -57,6 +57,16 @@ body {
     cursor: pointer;
 }
 
+.spec-filter {
+    margin: 5px;
+    width: 25px;
+    height: 25px;
+    float: left;
+    opacity: 0.5;
+    cursor: pointer;
+    background-size: contain;
+}
+
 .lb-filter {
     padding: 5px;
     margin: 5px;
@@ -100,3 +110,13 @@ body {
 .cerebral-div       { background-image: url('../img/class_cerebral.png'); }
 .powerhouse-div     { background-image: url('../img/class_powerhouse.png'); }
 .driven-div         { background-image: url('../img/class_driven.png'); }
+
+.def-down-div { background-image: url('../img/spec_defdown.png'); }
+.def-up-rm-div { background-image: url('../img/spec_defuprm.png'); }
+.dmg-red-rm-div { background-image: url('../img/spec_dmgredrm.png'); }
+.despair-rm-div { background-image: url('../img/spec_despairrm.png'); background-repeat: no-repeat; }
+.atk-down-rm-div { background-image: url('../img/spec_atkdownrm.png'); }
+.cdr-div { background-image: url('../img/spec_cdr.png'); }
+.chain-lock-rm-div { background-image: url('../img/spec_chainlockrm.png'); background-repeat: no-repeat; }
+.threshold-rm-div { background-image: url('../img/spec_thresholdrm.png'); }
+.cd-silence-rm-div { background-image: url('../img/spec_cdsilencerm.png'); }

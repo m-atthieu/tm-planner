@@ -139,7 +139,8 @@
 
 .type-filtered,
 .class-filtered,
-.lb-filtered {
+.lb-filtered,
+.special-filtered {
     opacity: 0.3;
 }
 

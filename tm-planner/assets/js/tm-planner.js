@@ -1757,6 +1757,49 @@ $(document).ready(function() {
         }
     });
 
+    //Basic Special Filter
+    var specialFilters = [];
+    $('.spec-filter').click(function() {
+        var filter = $(this).data('filter');
+
+        if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+            specialFilters.splice(specialFilters.indexOf(filter), 1);
+        } else {
+            $(this).addClass('selected');
+            specialFilters.push(filter);
+        }
+
+        if (specialFilters.length == 0) {
+            // Clear filters if no Class Filters are currently selected
+            $('.special-filtered').removeClass('special-filtered');
+        } else {
+            $('.booster, .booster-clone').each(function() {
+                var unitSpecial = details[$(this).data('id')].special;
+                $(this).addClass('special-filtered');
+
+                if(Array.isArray(unitSpecial)) {
+                    for(var matcher in matchers) {
+                        for(var sp in unitSpecial) {
+                            if(unitSpecial[sp].description.match(matchers[matcher].matcher) && specialFilters.indexOf(matchers[matcher].name) !== -1){
+                                $(this).removeClass('special-filtered');
+                                break;
+                            }
+                        }
+                        
+                    }
+                } else {
+                    for(var matcher in matchers) {
+                        if(unitSpecial.match(matchers[matcher].matcher) && specialFilters.indexOf(matchers[matcher].name) !== -1){
+                            $(this).removeClass('special-filtered');
+                            break;
+                        }
+                    }
+                }
+            });
+        }
+    });
+
     // Help button
     $('#help-button').click(function() {
         $('#help-modal').modal();
