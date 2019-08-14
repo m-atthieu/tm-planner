@@ -111,12 +111,12 @@ body {
 .powerhouse-div     { background-image: url('../img/class_powerhouse.png'); }
 .driven-div         { background-image: url('../img/class_driven.png'); }
 
-.def-down-div { background-image: url('../img/spec_defdown.png'); }
-.def-up-rm-div { background-image: url('../img/spec_defuprm.png'); }
-.dmg-red-rm-div { background-image: url('../img/spec_dmgredrm.png'); }
+.def-down-div { background-image: url('../img/spec_defdown.png'); background-repeat: no-repeat;  }
+.def-up-rm-div { background-image: url('../img/spec_defuprm.png'); background-repeat: no-repeat; }
+.dmg-red-rm-div { background-image: url('../img/spec_dmgredrm.png'); background-repeat: no-repeat; }
 .despair-rm-div { background-image: url('../img/spec_despairrm.png'); background-repeat: no-repeat; }
-.atk-down-rm-div { background-image: url('../img/spec_atkdownrm.png'); }
-.cdr-div { background-image: url('../img/spec_cdr.png'); }
+.atk-down-rm-div { background-image: url('../img/spec_atkdownrm.png'); background-repeat: no-repeat; }
+.cdr-div { background-image: url('../img/spec_cdr.png'); background-repeat: no-repeat; }
 .chain-lock-rm-div { background-image: url('../img/spec_chainlockrm.png'); background-repeat: no-repeat; }
-.threshold-rm-div { background-image: url('../img/spec_thresholdrm.png'); }
-.cd-silence-rm-div { background-image: url('../img/spec_cdsilencerm.png'); }
+.threshold-rm-div { background-image: url('../img/spec_thresholdrm.png'); background-repeat: no-repeat; }
+.cd-silence-rm-div { background-image: url('../img/spec_cdsilencerm.png'); background-repeat: no-repeat; }
