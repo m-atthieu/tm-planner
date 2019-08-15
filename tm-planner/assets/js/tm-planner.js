@@ -1905,14 +1905,15 @@ $(document).ready(function() {
     });
 
     $('#tm-level-label').on('input', function() {
-        var level = $('#tm-level-label').val() === '' || $('#tm-level-label').val() === 0 || !Number.isInteger($('#tm-level-label').val()) ? 1 : $('#tm-level-label').val();
+        var level = $('#tm-level-label').val() === '' || parseInt($('#tm-level-label').val()) <= 0 || parseInt($('#tm-level-label').val()) > 400  || !Number.isInteger(parseInt($('#tm-level-label').val())) ? 1 : parseInt($('#tm-level-label').val());
+        $('#tm-level-slider').val(level);
         var opponents = tm_opponents[tmId];
         var bossInfo = tm_boss_info[tmId];
 
         if ((tmId > 1889 && server == 'glb') || (tmId > 2064 && server == 'jpn')) {
             for (var opId in opponents) {
                 $('#boss-hp-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][3] + (bossInfo[opId][3] * (level - 1) * bossInfo[opId][6]))));
-                $('#boss-atk-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][4] + (bossInfo[opId][4] * ($('#tm-level-slider').val() - 1) * bossInfo[opId][7]))));
+                $('#boss-atk-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][4] + (bossInfo[opId][4] * (level - 1) * bossInfo[opId][7]))));
                 $('#boss-cd-' + (bossInfo[opId][1] + 1)).text(bossInfo[opId][5]);
             }
         } else {
