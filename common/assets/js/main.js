@@ -139,5 +139,5 @@ $(document).ready(function() {
             showFooter();
     });*/
 
-    $('#tm-level-label').text('Current TM Level: 1');
+    $('#tm-level-label').val('1');
 });

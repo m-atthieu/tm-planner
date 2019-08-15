@@ -1881,7 +1881,7 @@ $(document).ready(function() {
 
     //TM Slider Update
     $('#tm-level-slider').on('input', function() {
-        $('#tm-level-label').text('Current TM Level: ' + $('#tm-level-slider').val());
+        $('#tm-level-label').val($('#tm-level-slider').val());
 
         var opponents = tm_opponents[tmId];
         var bossInfo = tm_boss_info[tmId];
@@ -1899,6 +1899,26 @@ $(document).ready(function() {
             for (var i = 0; i < opponents.length; i++) {
                 $('#boss-hp-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][2] + (bossInfo[i][2] * ($('#tm-level-slider').val() - 1) * bossInfo[i][5]))));
                 $('#boss-atk-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][3] + (bossInfo[i][3] * ($('#tm-level-slider').val() - 1) * bossInfo[i][6]))));
+                $('#boss-cd-' + (i + 1)).text(bossInfo[i][4]);
+            }
+        }
+    });
+
+    $('#tm-level-label').on('input', function() {
+        var level = $('#tm-level-label').val() === '' || $('#tm-level-label').val() === 0 || !Number.isInteger($('#tm-level-label').val()) ? 1 : $('#tm-level-label').val();
+        var opponents = tm_opponents[tmId];
+        var bossInfo = tm_boss_info[tmId];
+
+        if ((tmId > 1889 && server == 'glb') || (tmId > 2064 && server == 'jpn')) {
+            for (var opId in opponents) {
+                $('#boss-hp-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][3] + (bossInfo[opId][3] * (level - 1) * bossInfo[opId][6]))));
+                $('#boss-atk-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][4] + (bossInfo[opId][4] * ($('#tm-level-slider').val() - 1) * bossInfo[opId][7]))));
+                $('#boss-cd-' + (bossInfo[opId][1] + 1)).text(bossInfo[opId][5]);
+            }
+        } else {
+            for (var i = 0; i < opponents.length; i++) {
+                $('#boss-hp-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][2] + (bossInfo[i][2] * (level - 1) * bossInfo[i][5]))));
+                $('#boss-atk-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][3] + (bossInfo[i][3] * (level - 1) * bossInfo[i][6]))));
                 $('#boss-cd-' + (i + 1)).text(bossInfo[i][4]);
             }
         }
