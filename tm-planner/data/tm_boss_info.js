@@ -162,6 +162,7 @@ var tm_boss_info = {
         '</span>', 380000, 2800, 1, 0.15, 0.05],
         2346: ['Galette',  2, '<span class="tooltiptext"><span class="tooltip-title">Stage 6:</span> <br/>' +
         '8 Turn Despair and 10 Turn Silence for both captains <br/>' +
+        '<span class="tooltip-title">Stage 7:</span> <br/>' +
         '<span class="tooltip-title">Preemptives:</span> All colour orbs badly matching for 2 turns <br/>' +
         'Crew Special Limit (2 for 9 Turns) <br/>' +
         '<span class="tooltip-title">HP < 50%:</span> 3 Turn Crew Paralysis <br/>' +
