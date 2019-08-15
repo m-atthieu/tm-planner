@@ -438,6 +438,10 @@ function getOpponents(tmId, server) {
     return true;
 }
 
+function formatNumber(n) {
+    return n.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+}
+
 function init(tmId, server) {
     $('#tm-select').val(tmId + '_' + server);
 
@@ -484,6 +488,24 @@ function init(tmId, server) {
         $('#last-save').html(localStorage.getItem('lastSave_' + tmId + serverStr));
     else
         $('#last-save').html('N/A');
+
+    var opponents = tm_opponents[tmId];
+    var bossInfo = tm_boss_info[tmId];
+
+    if (tmId == 2064 && server == 'jpn')
+        opponents = tm_opponents['2064_jpn'];
+
+    if ((tmId > 1889 && server == 'glb') || (tmId > 2064 && server == 'jpn')) {
+        for (var opId in opponents) {
+            $('#boss-hp-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][3] + (bossInfo[opId][3] * ($('#tm-level-slider').val() - 1) * 0.1))));
+            $('#boss-atk-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][4] + (bossInfo[opId][4] * ($('#tm-level-slider').val() - 1) * 0.05))));
+            $('#boss-cd-' + (bossInfo[opId][1] + 1)).text(bossInfo[opId][5]);
+        }
+    } else {
+        for (var i = 0; i < opponents.length; i++) {
+            bossInfo[i][1]
+        }
+    }
 
     return true;
 }
@@ -1852,6 +1874,29 @@ $(document).ready(function() {
                 }
                 
             });
+        }
+    });
+
+    //TM Slider Update
+    $('#tm-level-slider').on('input', function() {
+        $('#tm-level-label').text('Current TM Level: ' + $('#tm-level-slider').val());
+
+        var opponents = tm_opponents[tmId];
+        var bossInfo = tm_boss_info[tmId];
+
+        if (tmId == 2064 && server == 'jpn')
+            opponents = tm_opponents['2064_jpn'];
+
+        if ((tmId > 1889 && server == 'glb') || (tmId > 2064 && server == 'jpn')) {
+            for (var opId in opponents) {
+                $('#boss-hp-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][3] + (bossInfo[opId][3] * ($('#tm-level-slider').val() - 1) * 0.1))));
+                $('#boss-atk-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][4] + (bossInfo[opId][4] * ($('#tm-level-slider').val() - 1) * 0.05))));
+                $('#boss-cd-' + (bossInfo[opId][1] + 1)).text(bossInfo[opId][5]);
+            }
+        } else {
+            for (var i = 0; i < opponents.length; i++) {
+                bossInfo[i][1]
+            }
         }
     });
 

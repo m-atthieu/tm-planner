@@ -560,6 +560,26 @@
                         <button type="button" class="btn btn-dark btn-sm cal-button">Export to Calculator</button>
                     </div>
                 </div>
+
+                <br/>
+
+                <div class="row">
+                    <div class="col col-12">
+                        HP: <span id="boss-hp-1"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-12">
+                        ATK: <span id="boss-atk-1"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-12">
+                        CD: <span id="boss-cd-1"></span>
+                    </div>
+                </div>
             </div>
 
             <div class="col col-md-2 col-sm-4 col-6 team" data-team="1">
@@ -596,6 +616,26 @@
                 <div class="row">
                     <div class="col col-12">
                         <button type="button" class="btn btn-dark btn-sm cal-button">Export to Calculator</button>
+                    </div>
+                </div>
+
+                <br/>
+
+                <div class="row">
+                    <div class="col col-12">
+                        HP: <span id="boss-hp-2"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-12">
+                        ATK: <span id="boss-atk-2"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-12">
+                        CD: <span id="boss-cd-2"></span>
                     </div>
                 </div>
             </div>
@@ -636,6 +676,26 @@
                         <button type="button" class="btn btn-dark btn-sm cal-button">Export to Calculator</button>
                     </div>
                 </div>
+
+                <br/>
+
+                <div class="row">
+                    <div class="col col-12">
+                        HP: <span id="boss-hp-3"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-12">
+                        ATK: <span id="boss-atk-3"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-12">
+                        CD: <span id="boss-cd-3"></span>
+                    </div>
+                </div>
             </div>
 
             <div class="col col-md-2 col-sm-4 col-6 team" data-team="3">
@@ -674,6 +734,26 @@
                         <button type="button" class="btn btn-dark btn-sm cal-button">Export to Calculator</button>
                     </div>
                 </div>
+
+                <br/>
+
+                <div class="row">
+                    <div class="col col-12">
+                        HP: <span id="boss-hp-4"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-12">
+                        ATK: <span id="boss-atk-4"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-12">
+                        CD: <span id="boss-cd-4"></span>
+                    </div>
+                </div>
             </div>
 
             <div class="col col-md-2 col-sm-4 col-6 team" data-team="4">
@@ -710,6 +790,26 @@
                 <div class="row">
                     <div class="col col-12">
                         <button type="button" class="btn btn-dark btn-sm cal-button">Export to Calculator</button>
+                    </div>
+                </div>
+
+                <br/>
+
+                <div class="row">
+                    <div class="col col-12">
+                        HP: <span id="boss-hp-5"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-12">
+                        ATK: <span id="boss-atk-5"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-12">
+                        CD: <span id="boss-cd-5"></span>
                     </div>
                 </div>
             </div>
@@ -757,9 +857,29 @@
                         (Click to add only)
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col col-12">
+                        HP: <span id="boss-hp-6"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-12">
+                        ATK: <span id="boss-atk-6"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-12">
+                        CD: <span id="boss-cd-6"></span>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <br />
+        <br />
         <br />
 
         <div class="row">
@@ -784,17 +904,24 @@
                 <button type="button" class="btn btn-sm btn-danger not-read-only" id="reset-button">Reset</button>
             </div>
 
-            <div class="col col-md-4 col-12">
+            <div class="col col-md-3 col-12">
                 <button type="button" class="btn btn-sm btn-primary sl-btn not-read-only" id="save-button" disabled>Save</button>
                 <button type="button" class="btn btn-sm btn-info sl-btn not-read-only" id="load-button" disabled>Load</button>
                 Last Saved: <span id="last-save">N/A</span>
             </div>
+
+            <div class="col col-md-3 col-12">
+                <input type="range" min="1" max="200" value="1" class="slider" id="tm-level-slider">
+            </div>
         </div>
 
         <div class="row">
-            <div class="col offset-md-6 col-12">
+            <div class="col offset-md-6 col-md-3 col-12">
                 <input type="checkbox" class="confirm-save" id="confirm-save-checkbox" />
                 <label class="confirm-save" for="confirm-save">Confirm before Saving</label>
+            </div>
+            <div class="col col-md-3 col-12">
+                <label id="tm-level-label" class="confirm-save"></label>
             </div>
         </div>
 

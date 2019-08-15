@@ -129,7 +129,7 @@ $(document).ready(function() {
         nightModeToggle(nightMode);
     });
 
-    $('#header').load('/common/header.html', function() {
+    /*$('#header').load('/common/header.html', function() {
         if (typeof highlightNavbar !== 'undefined')
             highlightNavbar();
     });
@@ -137,5 +137,7 @@ $(document).ready(function() {
     $('#footer').load('/common/footer.html', function() {
         if (typeof showFooter !== 'undefined')
             showFooter();
-    });
+    });*/
+
+    $('#tm-level-label').text('Current TM Level: 1');
 });
