@@ -497,13 +497,15 @@ function init(tmId, server) {
 
     if ((tmId > 1889 && server == 'glb') || (tmId > 2064 && server == 'jpn')) {
         for (var opId in opponents) {
-            $('#boss-hp-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][3] + (bossInfo[opId][3] * ($('#tm-level-slider').val() - 1) * 0.1))));
-            $('#boss-atk-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][4] + (bossInfo[opId][4] * ($('#tm-level-slider').val() - 1) * 0.05))));
+            $('#boss-hp-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][3] + (bossInfo[opId][3] * ($('#tm-level-slider').val() - 1) * bossInfo[opId][6]))));
+            $('#boss-atk-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][4] + (bossInfo[opId][4] * ($('#tm-level-slider').val() - 1) * bossInfo[opId][7]))));
             $('#boss-cd-' + (bossInfo[opId][1] + 1)).text(bossInfo[opId][5]);
         }
     } else {
         for (var i = 0; i < opponents.length; i++) {
-            bossInfo[i][1]
+            $('#boss-hp-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][2] + (bossInfo[i][2] * ($('#tm-level-slider').val() - 1) * bossInfo[i][5]))));
+            $('#boss-atk-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][3] + (bossInfo[i][3] * ($('#tm-level-slider').val() - 1) * bossInfo[i][6]))));
+            $('#boss-cd-' + (i + 1)).text(bossInfo[i][4]);
         }
     }
 
@@ -1889,13 +1891,15 @@ $(document).ready(function() {
 
         if ((tmId > 1889 && server == 'glb') || (tmId > 2064 && server == 'jpn')) {
             for (var opId in opponents) {
-                $('#boss-hp-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][3] + (bossInfo[opId][3] * ($('#tm-level-slider').val() - 1) * 0.1))));
-                $('#boss-atk-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][4] + (bossInfo[opId][4] * ($('#tm-level-slider').val() - 1) * 0.05))));
+                $('#boss-hp-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][3] + (bossInfo[opId][3] * ($('#tm-level-slider').val() - 1) * bossInfo[opId][6]))));
+                $('#boss-atk-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][4] + (bossInfo[opId][4] * ($('#tm-level-slider').val() - 1) * bossInfo[opId][7]))));
                 $('#boss-cd-' + (bossInfo[opId][1] + 1)).text(bossInfo[opId][5]);
             }
         } else {
             for (var i = 0; i < opponents.length; i++) {
-                bossInfo[i][1]
+                $('#boss-hp-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][2] + (bossInfo[i][2] * ($('#tm-level-slider').val() - 1) * bossInfo[i][5]))));
+                $('#boss-atk-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][3] + (bossInfo[i][3] * ($('#tm-level-slider').val() - 1) * bossInfo[i][6]))));
+                $('#boss-cd-' + (i + 1)).text(bossInfo[i][4]);
             }
         }
     });
