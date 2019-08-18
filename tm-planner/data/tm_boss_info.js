@@ -266,6 +266,13 @@ var tm_boss_info = {
         '<span class="tooltip-title">HP < 20% (Once): </span> 50 Turn Despair' +
         '</span>', 1700000, 5800, 1, 0.1, 0.05]
     },
+    2197: {
+        2197: ['TBD', 0, '<span class="tooltiptext">TBD</span>', 0, 0, 0, 0, 0],
+        2197: ['TBD', 2, '<span class="tooltiptext">TBD</span>', 0, 0, 0, 0, 0],
+        2197: ['TBD', 3, '<span class="tooltiptext">TBD</span>', 0, 0, 0, 0, 0],
+        2197: ['TBD', 1, '<span class="tooltiptext">TBD</span>', 0, 0, 0, 0, 0],
+        2197: [['TBD & ', 'Issho'], 4, '<span class="tooltiptext">TBD</span>', 0, 0, 0, 0, 0]
+   },
     9999: [
         ['',            ''],
         ['',            ''],

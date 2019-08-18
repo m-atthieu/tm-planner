@@ -207,8 +207,9 @@ function getBoosters(tmId, server) {
         $('#div_1_4x_v2').show();
         $('#div_1_3x').show();
         $('#div_1_25x_v3').show();
-    } else if (server == 'jpn' && tmId == 2659) {
+    } else if (server == 'jpn' && (tmId == 2659 || tmId === 2197)) {
         // TM Smoker
+        // TM Blackeard Preview
         $('#div_2x').show();
         $('#div_1_8x').show();
         $('#div_1_6x').show();
@@ -254,6 +255,7 @@ function getBoosters(tmId, server) {
         var limitHealthTooltip = 0;
         var limitAttackTooltip = 0;
         var limitRecoveryTooltip = 0;
+        console.log(b.id);
         for(var x in details[b.id].limit) {
             if (details[b.id].limit[x].description.includes("Boosts base HP by ")) limitHealthTooltip += parseInt(details[b.id].limit[x].description.substring(18), 10);
             if (details[b.id].limit[x].description.includes("Boosts base ATK by ")) limitAttackTooltip += parseInt(details[b.id].limit[x].description.substring(19), 10);

@@ -6050,4 +6050,190 @@ var tm_boosters_jpn = {
             x_pts: 1.2
         },
     ],
+
+    // TM Blackbeard
+    2197: [
+        {   // Bullet
+            id: 2651,
+            ver: 2,
+            x_pts: 1.35
+        },
+        {   // Smoker
+            id: 2659,
+            ver: 2,
+            x_pts: 1.35
+        },
+        {   // Robin
+            id: 2655,
+            x_pts: 1.3
+        },
+        {   // Brook
+            id: 2657,
+            x_pts: 1.3
+        },
+        {   // Chopper
+            id: 2653,
+            x_pts: 1.3
+        },
+        {   // Big Mom
+            id: 2109,
+            ver: 4,
+            x_pts: 1.25
+        },
+        {   // Shanks
+            id: 2261,
+            ver: 4,
+            x_pts: 1.25
+        },
+        {   // Crcodile
+            id: 2137,
+            ver: 4,
+            x_pts: 1.25
+        },
+        {   // Hancock
+            id: 2299,
+            ver: 4,
+            x_pts: 1.25
+        },
+        {   // Kaido
+            id: 2613,
+            ver: 4,
+            x_pts: 1.25
+        },
+        {   // Doflamingo
+            id: 2443,
+            ver: 4,
+            x_pts: 1.25
+        },
+        {   // Nami
+            id: 2362,
+            ver: 4,
+            x_pts: 1.25
+        },
+        {   // Sakazuki & Issho
+            id: 2618,
+            ver: 4,
+            x_pts: 1.25
+        },
+        {   // Arlong
+            id: 2356,
+            type: 'raid',
+            x_pts: 1.2
+        },
+        {   // Doflamingo
+            id: 418,
+            type: 'raid',
+            x_pts: 1.2
+        },
+        {   // Magellan
+            id: 1374 ,
+            type: 'raid',
+            x_pts: 1.2
+        },
+        {   // Hancock
+            id: 865,
+            type: 'raid',
+            x_pts: 1.2
+        },
+        {   // General Franky
+            id: 1432 ,
+            type: 'raid',
+            x_pts: 1.2
+        },
+        {   // Caesar
+            id: 1830,
+            type: 'raid',
+            x_pts: 1.2
+        },
+        {   // Enel
+            id: 603,
+            type: 'raid',
+            x_pts: 1.2
+        },
+        {   // Bartolomeo
+            id: 1879 ,
+            type: 'raid',
+            x_pts: 1.2
+        },
+        {   // Law
+            id: 2649,
+            type: 'coliseum',
+            x_pts: 1.2
+        },
+        {   // Enel
+            id: 1897,
+            type: 'coliseum',
+            x_pts: 1.2
+        },
+        {   // Kuma
+            id: 2193,
+            type: 'coliseum',
+            x_pts: 1.2
+        },
+        {   // Shiryu
+            id: 1602,
+            type: 'coliseum',
+            x_pts: 1.2
+        },
+        {   // Pedro
+            id: 1945,
+            type: 'coliseum',
+            x_pts: 1.2
+        },
+        {   // Pica
+            id: 2416,
+            type: 'coliseum',
+            x_pts: 1.2
+        },
+        {   // Kyros
+            id: 1667,
+            type: 'coliseum',
+            x_pts: 1.2
+        },
+        {   // Rayleigh
+            id: 1978,
+            type: 'coliseum',
+            x_pts: 1.2
+        },
+        {   // Franky
+            id: 901,
+            type: 'coliseum',
+            x_pts: 1.2
+        },
+        {   // Morley
+            id: 2569,
+            type: 'coliseum',
+            x_pts: 1.2
+        },
+        {   // Smoothie
+            id: 2375,
+            type: 'coliseum',
+            x_pts: 1.2
+        },
+        {   // Katakuri
+            id: 2471,
+            type: 'coliseum',
+            x_pts: 1.2
+        },
+        {   // Brook
+            id: 2489,
+            type: 'coliseum',
+            x_pts: 1.2
+        },
+        {   // Ann
+            id: 2665,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Donald Moderate
+            id: 2666,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Issho
+            id: 2668,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+    ],
 };
