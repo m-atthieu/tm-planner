@@ -163,7 +163,7 @@ var tm_boss_info = {
         2346: ['Galette',  2, '<span class="tooltiptext"><span class="tooltip-title">Stage 6:</span> <br/>' +
         '8 Turn Despair and 10 Turn Silence for both captains <br/>' +
         '<span class="tooltip-title">Stage 7:</span> <br/>' +
-        '<span class="tooltip-title">Preemptives:</span> All colour orbs badly matching for 2 turns <br/>' +
+        '<span class="tooltip-title">Preemptives:</span> [STR] [DEX] [QCK] [PSY] [INT] orbs badly matching for 2 turns <br/>' +
         'Crew Special Limit (2 for 9 Turns) <br/>' +
         '<span class="tooltip-title">HP < 50%:</span> 3 Turn Crew Paralysis <br/>' +
         '</span>', 610000, 4190, 1, 0.1, 0.05, 1200, 0.1],
@@ -252,7 +252,7 @@ var tm_boss_info = {
         '<span style="tooltip-title">Every Turn:</span> Increases received damage by 0.1x and deals Counter Damage <br/>' +
         '<span style="tooltip-title">After 2 (1) turns (and every 2 turns after):</span> Counter-Attack' +
         '</span>', 690000, 5600, 2, 0.1, 0.05, 1200, 0.1],
-        2302: ['Bege', 3, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> 3 Turn Crew Special Silence, 3 Turn Percent Damage Reduction, Changes all orbs to Colour or [BLOCK]  <br/>' +
+        2302: ['Bege', 3, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> 3 Turn Crew Special Silence, 3 Turn Percent Damage Reduction, Changes all orbs to [STR] [DEX] [QCK] [PSY] [INT] or [BLOCK]  <br/>' +
         '<span style="tooltip-title">After 3 (2) turns (Once):</span> 3 Turn Enrage <br/>' +
         '<span style="tooltip-title">On Death:</span> Heals to 30% HP, changes Type to DEX, summons 5 Mobs and Slot Seals Captain & Friend Captain for 10 turns' +
         '</span>', 400000, 4280, 1, 0.1, 0.05, 1200, 0.1],
@@ -274,7 +274,7 @@ var tm_boss_info = {
         '<span class="tooltip-title">Below 20% HP (Once): </span> 8 Turn Resilience' +
         '</span>', 1000000, 4300, 1, 0.1, 0.05, 5000, 0.1],
         2659: ['Smoker', 5, '<span class="tooltiptext"><span class="tooltip-title">Stage 2:</span> <br/>' +
-        '<span style="color:goldenrod">Tashigi:</span> 99 Turn Matching Orb Rate Down, Changes all Orbs to Colour Orbs, 7 Turns Chain Coefficient Reduction, Has 2 PSY, 1 INT mobs <br/>' +
+        '<span style="color:goldenrod">Tashigi:</span> 99 Turn Matching Orb Rate Down, Changes all Orbs to [STR] [DEX] [QCK] [PSY] [INT] Orbs, 7 Turns Chain Coefficient Reduction, Has 2 PSY, 1 INT mobs <br/>' +
         '<span class="tooltip-title">Stage 3:</span> <br/>' +
         '<span class="tooltip-title">Preemptives:</span> Changes to random type, 99 Turn Immunity  <br/>' +
         '<span class="tooltip-title">Interrupt (Orb Boost):</span> All Orbs Block  <br/>' +
