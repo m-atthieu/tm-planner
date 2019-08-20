@@ -507,7 +507,7 @@ function getOpponents(tmId, server) {
             var opPosTeam = opPosDiv.closest('.team');
 
             $('#tooltip-' + (opponents[opId][2] + 1)).find('.tooltiptext').empty();
-            $('#tooltip-' + (opponents[opId][2] + 1)).append(bossInfo[opId][2]);
+            $('#tooltip-' + (opponents[opId][2] + 1)).append(decorateStr(bossInfo[opId][2]));
 
             if (Array.isArray(opName) && Array.isArray(opType)) {
                 opPosDiv.empty();
@@ -535,7 +535,7 @@ function getOpponents(tmId, server) {
             var opType = op[1];
 
             $('#tooltip-' + (i + 1)).find('.tooltiptext').empty();
-            $('#tooltip-' + (i + 1)).append(bossInfo[i][1]);
+            $('#tooltip-' + (i + 1)).append(decorateStr(bossInfo[i][1]));
 
             if (Array.isArray(opName) && Array.isArray(opType)) {
                 $('#op-' + (i + 1)).empty();
@@ -1957,10 +1957,10 @@ $(document).ready(function() {
 
     // Multi Class mode
     createTooltip($('#multi-class-mode-label'),
-        "Select units for Captain Abilities benefiting from multiple classes, e.g. Katakuri, Carrot (Disables 2 Classes restriction)");
+    "Select units for Captain Abilities benefiting from multiple classes, e.g. Katakuri, Carrot (Disables 2 Classes restriction)");
 
-        createTooltip($('#or-class-mode-label'),
-        "Enable class filtering to show all units that have at least one of the selected classes");
+    createTooltip($('#or-class-mode-label'),
+    "Enable class filtering to show all units that have at least one of the selected classes");
 
     $('#multi-class-mode-checkbox').click(function() {
         if ($(this).prop('checked'))

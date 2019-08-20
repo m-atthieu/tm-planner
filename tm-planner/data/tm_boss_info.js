@@ -138,7 +138,7 @@ var tm_boss_info = {
         '<span class="tooltip-title">HP < 50%</span> 3 Turn Paralysis, 2 Turn Anti-Heal <br/>' +
         '<span class="tooltip-title">On Death:</span> 20% HP Recovery, 2 Turn Percent Damage Reduction (80%)' +
         '</span', 0, 0, 0, 0, 0, 0, 0],
-        2197: ['Blackbeard',     1, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> 2 Turn Chain Coefficient Reduction (0.1x), 98 Turn Special Limit (2/Turn), All orbs to [Block] <br/>' +
+        2197: ['Blackbeard',     1, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> 2 Turn Chain Coefficient Reduction (0.1x), 98 Turn Special Limit (2/Turn), All orbs to [BLOCK] <br/>' +
         '<span class="tooltip-title">Every Turn:</span> Remove Positive Buffs' +
         '</span>', 0, 0, 0, 0, 0, 0, 0],
         2362: ['Nami',      4, '<span class="tooltiptext"><span class="tooltip-title">Stage 6:</span> <br/>' +
@@ -147,7 +147,7 @@ var tm_boss_info = {
         '<span style="tooltip-title">Turn 2:</span> 99 Turn ATK Up (1.3x), 99 Turn Percent Damage Reduction (30%) <br/>' +
         '<span class="tooltip-title">Stage 7:</span> <br/>' +
         '<span class="tooltip-title">Preemptives:</span> 2 Turn Special Bind, 1 Turn Damage Threshold, 98 Turn Venom Immunity <br/>' +
-        'Shuffles all orbs to [Block] or [G] <br/>' +
+        'Shuffles all orbs to [BLOCK] or [G] <br/>' +
         '<span class="tooltip-title">Interrupt (Delay):</span> Counter-Attack & Enrage (2x ATK) <br/>' +
         '<span class="tooltip-title">HP < 20%: </span> 1 Turn Damage Immunity, 9 Turn Special Rewind, 99 Turn End of Turn Damage (7300) <br/>' +
         '</span>', 0, 0, 0, 0, 0, 0, 0]
@@ -167,17 +167,17 @@ var tm_boss_info = {
         'Crew Special Limit (2 for 9 Turns) <br/>' +
         '<span class="tooltip-title">HP < 50%:</span> 3 Turn Crew Paralysis <br/>' +
         '</span>', 610000, 4190, 1, 0.1, 0.05, 1200, 0.1],
-        2369: ['Montd\'Or', 1, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> Rewind Top Row and Middle Left Specials By 2 Turns, 5 Turn Slot Bind for Top Row, Changes all orbs to [Block] <br/>' +
+        2369: ['Montd\'Or', 1, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> Rewind Top Row and Middle Left Specials By 2 Turns, 5 Turn Slot Bind for Top Row, Changes all orbs to [BLOCK] <br/>' +
         '<span class="tooltip-title">On Death:</span> Deals 0.75x his ATK in damage <br/>' +
         '</span>', 520000, 3910, 1, 0.1, 0.05, 1200, 0.1],
         2234: ['Big Mom', 4, '<span class="tooltiptext"><span class="tooltip-title">Stage 6:</span> <br/>' +
-        '<span class="tooltip-title">Preemptive:</span> Change all orbs to [Block] <br/>' +
+        '<span class="tooltip-title">Preemptive:</span> Change all orbs to [BLOCK] <br/>' +
         '<span style="tooltip-title">HP < 50% (Once):</span> 4-Turn Chain Coefficient Reduction (x0.3) <br/>' +
         '<span class="tooltip-title">Stage 7:</span> <br/>' +
         '<span class="tooltip-title">Preemptives:</span> 98 Turn Delay, Poison, & Toxic Immunity <br/>' +
         '3 Turn Damage Reduction (70%) <br/>' +
         '6 Turn Bind Bottom Row <br/>' +
-        'Shuffles all orbs to [Block] or [G] <br/>' +
+        'Shuffles all orbs to [BLOCK] or [G] <br/>' +
         '<span class="tooltip-title">Katakuri Left Alive:</span> Revives to Full HP, boosts own attack by 1.5x for 99 turns, crew special limit (1 for 99 turns), 2 turn damage immunity <br/>' +
         '<span class="tooltip-title">Big Mom Left Alive </span> Revives to Full HP, clears buffs, attack interval to 1, blows away 2 random sailors for 3 turns <br/>' +
         '<span class="tooltip-title">Big Mom HP < 50% (Once): </span> 5 Turn Increased Damage Received (x1.5), 3 Turn Crew Paralysis' +
@@ -188,19 +188,35 @@ var tm_boss_info = {
         '<span style="color:goldenrod">Smoothie:</span> 4-Turn ATK Up (1.5x), 4-Turn Threshold Damage Reduction (20k) <br/>' +
         '<span class="tooltip-title">Stage 3:</span> <br/>' +
         '<span class="tooltip-title">Preemptives:</span> 3-Turn Chain Lock (1.2x) <br/>' +
-        'Shuffles orbs to [Empty] or [Bomb] <br/>' +
+        'Shuffles orbs to [EMPTY] or [BOMB] <br/>' +
         'Silences crew for 2 Turns <br/>' +
         '<span class="tooltip-title">Interrupt (ATK Boost):</span> Clears Buffs, 99 Turn ATK Down (99%) <br/>' +
-        '<span class="tooltip-title">HP < 50% (Once): </span> Right Row slot bind 4 turns and changes all orbs to [Block] <br/>' +
+        '<span class="tooltip-title">HP < 50% (Once): </span> Right Row slot bind 4 turns and changes all orbs to [BLOCK] <br/>' +
         '<span class="tooltip-title">HP < 20% (Once): </span> 70% HP Cut, 9 Turn Burn (3k/Perfect), 4 Turn Damage Threshold (99%)' +
         '</span>', 1200000, 5300, 1, 0.1, 0.05, 5000, 0.1]
     },
     2443: {
-        1401: ['Gladius', 0, '<span class="tooltiptext">TBD</span>', 0, 0, 0, 0, 0, 1200, 0.1],
-        1902: ['Pica', 1, '<span class="tooltiptext">TBD</span>', 0, 0, 0, 0, 0, 1200, 0.1],
-        1906: ['Sugar', 2, '<span class="tooltiptext">TBD</span>', 0, 0, 0, 0, 0, 1200, 0.1],
-        2144: ['Diamante', 3, '<span class="tooltiptext">TBD</span>', 0, 0, 0, 0, 0, 1200, 0.1],
-        2443: ['Doflamingo', 4, '<span class="tooltiptext">TBD</span>', 0, 0, 0, 0, 0, 5000, 0.1]
+        1401: ['Gladius', 0, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> 6 Turn Despair, 3 Turn Damage Threshold (99% for Damage over 60k), Delay Immunity <br/>' +
+        '<span style="tooltip-title">HP < 50% (Once):</span> 4 Turn Resilience <br/>' +
+        '<span style="tooltip-title">HP < 20% (Once):</span> 80900 Damage <br/>' +
+        '</span>', 809000, 4000, 1, 0.1, 0.05, 1200, 0.1],
+        1902: ['Pica', 1, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> Makes Non-PSY orbs count as badly matching for 20 turns, 50% HP Cut, 2 Hit Perfect Barrier, All Debuff Immunity <br/>' + 
+        '<span style="tooltip-title">On Death:</span> Recovers 300k Health, 4 Turn 300x Increased Defense, 4 Turn 1.5x ATK, Removes Perfect Barrier, Reduces CD to 1 <br/>' +
+        '</span>', 1030100, 6301, 2, 0.1, 0.05, 1200, 0.1],
+        1906: ['Sugar', 2, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> Change all orbs to [BOMB], [TND], [EMPTY], 1.5x ATK Boost for Mobs, 2 Turn HP & [PSY] Barrier for Mobs <br/>' +
+        '</span>', 480000, 1755, 1, 0.1, 0.05, 1200, 0.1],
+        2144: ['Diamante', 3, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> 3 Turn Special Rewind for Top & Middle Row, 5 Turn Special Silence for Bottom Right Character, 10 Turn End of Turn Damage (5k) <br/>' + 
+        '<span style="tooltip-title">Turn 2:</span> Change to [QCK], 3Turn 80% Damage Reduction from [DEX], Give all [EMPTY] orbs <br/>' +
+        '</span>', 730000, 4401, 2, 0.1, 0.05, 1200, 0.1],
+        2443: ['Doflamingo', 4, '<span class="tooltiptext"><span class="tooltip-title">Stage 6:</span> <br/>' +
+        '<span class="tooltip-title">Preemptives:</span> 1 Turn Special Silence, 4 Turn Bind for Bottom Row <br/>' +
+        '<span class="tooltip-title">Turn 2:</span> 4 Turn Despair, 3 Turn Character Paralysis <br/>' +
+        '<span class="tooltip-title">Stage 7:</span> <br/>' +
+        '<span class="tooltip-title">Preemptives:</span> Delay Immunity, 3 Turn 1.2x Chain Limit, 3 Turn 50% Damage Reduction, 2 Turn 2-hit Good Barrier <br/>' +
+        '<span class="tooltip-title">Every Turn:</span> Gives all [BLOCK] orbs <br/>' +
+        '<span class="tooltip-title">Every 3 Turns:</span> 3 Turn Anti-Heal, 4 Turn 1.5x ATK Boost, <br/>' +
+        '<span style="tooltip-title">HP < 20%:</span> 1600000 Damage <br/>' +
+        '</span>', 1100000, 4500, 1, 0.1, 0.05, 5000, 0.1]
     },
     2510: {
          836: ['Kuma', 1, '<span class="tooltiptext">TBD</span>', 0, 0, 0, 0, 0, 1200, 0.1],
@@ -236,7 +252,7 @@ var tm_boss_info = {
         '<span style="tooltip-title">Every Turn:</span> Increases received damage by 0.1x and deals Counter Damage <br/>' +
         '<span style="tooltip-title">After 2 (1) turns (and every 2 turns after):</span> Counter-Attack' +
         '</span>', 690000, 5600, 2, 0.1, 0.05, 1200, 0.1],
-        2302: ['Bege', 3, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> 3 Turn Crew Special Silence, 3 Turn Percent Damage Reduction, Changes all orbs to Colour or [Block]  <br/>' +
+        2302: ['Bege', 3, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> 3 Turn Crew Special Silence, 3 Turn Percent Damage Reduction, Changes all orbs to Colour or [BLOCK]  <br/>' +
         '<span style="tooltip-title">After 3 (2) turns (Once):</span> 3 Turn Enrage <br/>' +
         '<span style="tooltip-title">On Death:</span> Heals to 30% HP, changes Type to DEX, summons 5 Mobs and Slot Seals Captain & Friend Captain for 10 turns' +
         '</span>', 400000, 4280, 1, 0.1, 0.05, 1200, 0.1],
