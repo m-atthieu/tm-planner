@@ -635,6 +635,8 @@ function init(tmId, server) {
         }
     }
 
+    calculateTotalPoints($('#tm-level-slider').val(), tmId, server);
+
     return true;
 }
 
@@ -1139,6 +1141,8 @@ function updatePts(btn) {
             $('#boss-pts-' + (i + 1)).text(formatNumber(Math.round(bird * parseFloat($('.x_pts')[i].innerHTML) * (bossInfo[opId][7] + (bossInfo[opId][7] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][8])))));
         }
     }
+
+    calculateTotalPoints($('#tm-level-slider').val(), tmId, server);
 }
 
 function updateAllPts() {
@@ -1186,6 +1190,27 @@ function hasAmbush(tmId) {
     return tmId.toString().includes('2109') || tmId.toString().includes('2261') || tmId.toString().includes('2299') || tmId.toString().includes('2299')
             || tmId.toString().includes('2336') || tmId.toString().includes('2387') || tmId.toString().includes('2469') || tmId.toString().includes('2557')
             || tmId.toString().includes('2659'); 
+}
+
+function calculateTotalPoints(currentLevel, tmId, server) {
+    var opponents = tm_opponents[tmId];
+    var bossInfo = tm_boss_info[tmId];
+    var ptsTotal = 0;
+    var bird = hasAmbush(tmId) ? 1.5 : 1.0;
+    
+    for(var i = 0; i < currentLevel; i++) {
+        if ((tmId > 1889 && server == 'glb') || (tmId > 2064 && server == 'jpn')) {
+            for (var opId in opponents) {
+                ptsTotal += Math.round(bird * parseFloat($('.x_pts')[bossInfo[opId][1]].innerHTML) * (bossInfo[opId][8] + (bossInfo[opId][8] *  ((currentLevel - 1) * bossInfo[opId][9]))));
+            }
+        } else {
+            for (var i = 0; i < opponents.length; i++) {
+                ptsTotal += Math.round(bird * parseFloat($('.x_pts')[i].innerHTML) * (bossInfo[opId][7] + (bossInfo[opId][7] *  ((currentLevel - 1) * bossInfo[opId][8]))));
+            }
+        }
+    }
+
+    $('#tm-point-total-label').text(ptsTotal);
 }
 
 $(document).ready(function() {
@@ -2182,6 +2207,8 @@ $(document).ready(function() {
                 $('#boss-pts-' + (i + 1)).text(formatNumber(Math.round(bird * parseFloat($('.x_pts')[i].innerHTML) * (bossInfo[opId][7] + (bossInfo[opId][7] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][8])))));
             }
         }
+
+        calculateTotalPoints($('#tm-level-slider').val(), tmId, server);
     });
 
     $('#tm-level-label').on('input', function() {
@@ -2207,6 +2234,8 @@ $(document).ready(function() {
                 $('#boss-pts-' + (i + 1)).text(formatNumber(Math.round(bird * parseFloat($('.x_pts')[i].innerHTML) * (bossInfo[opId][7] + (bossInfo[opId][7] *  (level - 1) * bossInfo[opId][8])))));
             }
         }
+
+        calculateTotalPoints(level, tmId, server);
     });
 
     // Help button
