@@ -7589,6 +7589,10 @@ var tm_boosters = {
             id: 2435,
             x_pts: 1.35
         },
+        {   // TM Doffy
+            id: 2443,
+            x_pts: 1.35
+        },
         {   // Smoothie & Oven
             id: 2469,
             x_pts: 1.35
