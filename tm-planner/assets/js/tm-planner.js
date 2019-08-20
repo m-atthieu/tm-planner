@@ -1055,11 +1055,12 @@ function createCloneInSlot(orig, slot, isAmbush) {
         cloneType = 'ambush';
     else
         cloneType = 'clone';
-
-    if(orig[0].id.includes('_clone')) {
-        clone.attr('id', 'booster-ambush-clone_' + origId + '_' + cloneType);
-    } else {
-        clone.attr('id', 'booster-clone_' + origId + '_' + cloneType);
+    if(Object.keys(orig).length > 0) {
+        if(orig[0].id.includes('_clone')) {
+            clone.attr('id', 'booster-ambush-clone_' + origId + '_' + cloneType);
+        } else {
+            clone.attr('id', 'booster-clone_' + origId + '_' + cloneType);
+        }
     }
     clone.data('id', orig.data('id'));
     clone.data('x_pts', orig.data('x_pts'));
