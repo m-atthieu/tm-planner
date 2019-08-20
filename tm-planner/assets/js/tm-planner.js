@@ -79,7 +79,7 @@ function getBoosters(tmId, server) {
         $('#div_1_5x').show();
         $('#div_1_35x').show();
         $('#div_1x').show();
-    } else if (server == 'glb' && tmId == 2469) {
+    } else if (server == 'glb' && (tmId == 2469 || tmId == 2443)) {
         // TM Smoothie & Oven
         $('#div_2_2x').show();
         $('#div_2x').show();
@@ -623,6 +623,7 @@ function init(tmId, server) {
             $('#boss-hp-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][3] + (bossInfo[opId][3] * ($('#tm-level-slider').val() - 1) * bossInfo[opId][6]))));
             $('#boss-atk-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][4] + (bossInfo[opId][4] * ($('#tm-level-slider').val() - 1) * bossInfo[opId][7]))));
             $('#boss-cd-' + (bossInfo[opId][1] + 1)).text(bossInfo[opId][5]);
+            $('#boss-pts-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][8] + (bossInfo[opId][8] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][9]))));
         }
     } else {
         for (var i = 0; i < opponents.length; i++) {
@@ -1119,6 +1120,21 @@ function updatePts(btn) {
     });
 
     btn.closest('.team').find('.x_pts').html(x_pts.toFixed(2));
+
+    var tmId = $('#tm-select').val().substring(0, $('#tm-select').val().indexOf('_'));
+    var server = $('#tm-select').val().substring($('#tm-select').val().indexOf('_') + 1).trim();
+    var opponents = tm_opponents[tmId];
+    var bossInfo = tm_boss_info[tmId];
+
+    if ((tmId > 1889 && server == 'glb') || (tmId > 2064 && server == 'jpn')) {
+        for (var opId in opponents) {
+            $('#boss-pts-' + (bossInfo[opId][1] + 1)).text(formatNumber(parseFloat($('.x_pts')[bossInfo[opId][1]].innerHTML) * (bossInfo[opId][8] + (bossInfo[opId][8] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][9]))));
+        }
+    } else {
+        for (var i = 0; i < opponents.length; i++) {
+            $('#boss-pts-' + (i + 1)).text(formatNumber(parseFloat($('.x_pts')[i].innerHTML) * (bossInfo[opId][7] + (bossInfo[opId][7] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][8]))));
+        }
+    }
 }
 
 function updateAllPts() {
@@ -2151,12 +2167,14 @@ $(document).ready(function() {
                 $('#boss-hp-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][3] + (bossInfo[opId][3] * ($('#tm-level-slider').val() - 1) * bossInfo[opId][6]))));
                 $('#boss-atk-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][4] + (bossInfo[opId][4] * ($('#tm-level-slider').val() - 1) * bossInfo[opId][7]))));
                 $('#boss-cd-' + (bossInfo[opId][1] + 1)).text(bossInfo[opId][5]);
+                $('#boss-pts-' + (bossInfo[opId][1] + 1)).text(formatNumber(parseFloat($('.x_pts')[bossInfo[opId][1]].innerHTML) * (bossInfo[opId][8] + (bossInfo[opId][8] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][9]))));
             }
         } else {
             for (var i = 0; i < opponents.length; i++) {
                 $('#boss-hp-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][2] + (bossInfo[i][2] * ($('#tm-level-slider').val() - 1) * bossInfo[i][5]))));
                 $('#boss-atk-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][3] + (bossInfo[i][3] * ($('#tm-level-slider').val() - 1) * bossInfo[i][6]))));
                 $('#boss-cd-' + (i + 1)).text(bossInfo[i][4]);
+                $('#boss-pts-' + (i + 1)).text(formatNumber(parseFloat($('.x_pts')[i].innerHTML) * (bossInfo[opId][7] + (bossInfo[opId][7] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][8]))));
             }
         }
     });
@@ -2172,12 +2190,14 @@ $(document).ready(function() {
                 $('#boss-hp-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][3] + (bossInfo[opId][3] * (level - 1) * bossInfo[opId][6]))));
                 $('#boss-atk-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][4] + (bossInfo[opId][4] * (level - 1) * bossInfo[opId][7]))));
                 $('#boss-cd-' + (bossInfo[opId][1] + 1)).text(bossInfo[opId][5]);
+                $('#boss-pts-' + (bossInfo[opId][1] + 1)).text(formatNumber(parseFloat($('.x_pts')[bossInfo[opId][1]].innerHTML) * (bossInfo[opId][8] + (bossInfo[opId][8] *  (level - 1) * bossInfo[opId][9]))));
             }
         } else {
             for (var i = 0; i < opponents.length; i++) {
                 $('#boss-hp-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][2] + (bossInfo[i][2] * (level - 1) * bossInfo[i][5]))));
                 $('#boss-atk-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][3] + (bossInfo[i][3] * (level - 1) * bossInfo[i][6]))));
                 $('#boss-cd-' + (i + 1)).text(bossInfo[i][4]);
+                $('#boss-pts-' + (i + 1)).text(formatNumber(parseFloat($('.x_pts')[i].innerHTML) * (bossInfo[opId][7] + (bossInfo[opId][7] *  (level - 1) * bossInfo[opId][8]))));
             }
         }
     });
