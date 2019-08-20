@@ -7547,11 +7547,13 @@ var tm_boosters = {
     2443: [
         {   // TM RR Law
             id: 2438,
-            x_pts: 2
+            x_pts: 2,
+            rec: 5
         },
         {   // TM RR Cora
             id: 2437,
-            x_pts: 1.75
+            x_pts: 1.75,
+            rec: 5
         },
         {   // Cracker
             id: 2465,
@@ -7563,7 +7565,8 @@ var tm_boosters = {
         },
         {   // Usopp
             id: 2439,
-            x_pts: 1.35
+            x_pts: 1.35,
+            rec: 5
         },
         {   // Ideo
             id: 2420,
@@ -7600,7 +7603,8 @@ var tm_boosters = {
         {   // Sabo
             id: 2441,
             type: 'legend',
-            x_pts: 1.2
+            x_pts: 1.2,
+            rec: 5
         },
         {   // TM RR Jinbe
             id: 2466,
@@ -7863,7 +7867,8 @@ var tm_boosters = {
         {   // Shanks
             id: 2261,
             type: 'tm',
-            x_pts: 1.2
+            x_pts: 1.2,
+            rec: 5
         },
         {   // Boa Hancock
             id: 2299,

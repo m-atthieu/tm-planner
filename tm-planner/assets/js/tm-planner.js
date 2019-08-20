@@ -1222,6 +1222,37 @@ function calculateTotalPoints(currentLevel, tmId, server) {
     $('#tm-point-total-label').text(ptsTotal);
 }
 
+function recChar(e) {
+    var tmId = $('#tm-select').val().substring(0, $('#tm-select').val().indexOf('_'));
+    var server = $('#tm-select').val().substring($('#tm-select').val().indexOf('_') + 1).trim();
+    var boosters = [];
+    var pos = e.id.toString().charAt(e.id.length - 1);
+
+    if(server === 'glb') {
+        boosters = tm_boosters[tmId];
+    } else {
+        boosters = tm_boosters_jpn[tmId];
+    }
+    console.log(pos);
+    $('.booster, booster-ambush-clone').removeClass('rec-char');
+    
+    for(var i = 0; i < boosters.length; i++) {
+        var b = boosters[i];
+        if(b.rec && b.rec === parseInt(pos)) {
+            $('#booster_' + b.id).addClass('rec-char');
+            if($('#booster_' + b.id + '_clone').length > 0) {
+                $('#booster_' + b.id + '_clone').addClass('rec-char');
+            }
+        }
+    }
+
+    $('#snackbar').addClass('show');
+    
+    setTimeout(function() { 
+        $('#snackbar').removeClass('show');
+    }, 3000);
+}
+
 $(document).ready(function() {
     // Retrieve Settings
     var server = 'glb';
