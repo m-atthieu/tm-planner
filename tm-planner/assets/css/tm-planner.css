@@ -132,6 +132,11 @@
     filter: brightness(0.5);
 }
 
+.booster-ambush-clone > img {
+    -webkit-filter: brightness(2);
+    filter: brightness(2);
+}
+
 #export-url-div,
 #read-only-button-div {
     display: none;

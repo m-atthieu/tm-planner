@@ -255,7 +255,6 @@ function getBoosters(tmId, server) {
         var limitHealthTooltip = 0;
         var limitAttackTooltip = 0;
         var limitRecoveryTooltip = 0;
-        console.log(b.id);
         for(var x in details[b.id].limit) {
             if (details[b.id].limit[x].description.includes("Boosts base HP by ")) limitHealthTooltip += parseInt(details[b.id].limit[x].description.substring(18), 10);
             if (details[b.id].limit[x].description.includes("Boosts base ATK by ")) limitAttackTooltip += parseInt(details[b.id].limit[x].description.substring(19), 10);
@@ -360,6 +359,128 @@ function getBoosters(tmId, server) {
     }
 
     return true;
+}
+
+var dupeBoosters = [];
+
+function createBooster(booster, s) {
+    var b = booster;
+    var server = s ? 'glb' : 'jpn';
+
+    var imgDiv = $('<div></div>');
+    imgDiv.append(createImgHtml(getThumb(b.id), 40, false));
+    imgDiv.addClass('booster');
+    imgDiv.addClass('booster-ambush-clone');
+    imgDiv.data('id', b.id);
+    imgDiv.data('x_pts', b.x_pts);
+    // Info in tooltip
+    var limitCdTooltip = 0;
+    var limitHealthTooltip = 0;
+    var limitAttackTooltip = 0;
+    var limitRecoveryTooltip = 0;
+    for(var x in details[b.id].limit) {
+        if (details[b.id].limit[x].description.includes("Boosts base HP by ")) limitHealthTooltip += parseInt(details[b.id].limit[x].description.substring(18), 10);
+        if (details[b.id].limit[x].description.includes("Boosts base ATK by ")) limitAttackTooltip += parseInt(details[b.id].limit[x].description.substring(19), 10);
+        if (details[b.id].limit[x].description.includes("Boosts base RCV by ")) limitRecoveryTooltip += parseInt(details[b.id].limit[x].description.substring(19), 10);
+        if (details[b.id].limit[x].description.includes("Reduce base Special Cooldown by ")) limitCdTooltip += parseInt(details[b.id].limit[x].description.substring(32, 33), 10);
+    }
+    limitCdTooltip = Math.abs(limitCdTooltip - cooldowns[b.id - 1][1]);
+    limitHealthTooltip = limitHealthTooltip + units[b.id - 1][12];
+    limitAttackTooltip = limitAttackTooltip + units[b.id - 1][13];
+    limitRecoveryTooltip = limitRecoveryTooltip + units[b.id - 1][14];
+    
+    createTooltip(imgDiv, '<span>' + units[b.id - 1][0] + '</span><br/>' +
+    '<span class="tooltip-title">HP:</span> ' + limitHealthTooltip + '<br/>'+
+    '<span class="tooltip-title">ATK:</span> ' + limitAttackTooltip + '<br/>'+
+    '<span class="tooltip-title">RCV:</span> ' + limitRecoveryTooltip + '<br/>' +
+    '<span class="tooltip-title">CD:</span> ' + limitCdTooltip +
+    '');
+
+    // Type and Class
+    imgDiv.data('type', units[b.id - 1][1]);
+
+    var unitClass = units[b.id - 1][2];
+    if (Array.isArray(unitClass)) {
+        var class1;
+        var class2;
+
+        if (Array.isArray(unitClass[0])) {
+            // Dual Units
+            var dualClass = unitClass[2];
+            class1 = dualClass[0];
+            class2 = dualClass[1];
+        } else {
+            class1 = unitClass[0];
+            class2 = unitClass[1];
+        }
+
+        imgDiv.data('class1', class1);
+        imgDiv.data('class2', class2);
+    } else {
+        imgDiv.data('class1', unitClass);
+    }
+
+    // Has LB
+    var uDetail = details[b.id];
+    var hasLb = false;
+    if (uDetail.limit || uDetail.potential) {
+        if (server === 'jpn' || server === 'glb' && glb_no_lb.indexOf(b.id) == -1)
+            hasLb = true;
+    }
+    imgDiv.data('has_lb', hasLb);
+
+    imgDiv.data('max_lv', units[b.id - 1][7])
+    imgDiv.data('team', -1);
+    imgDiv.attr('id', 'booster_' + b.id + '_clone');
+    imgDiv.attr('draggable', true);
+    imgDiv.css('display', 'inline-block');
+
+    var _x_pts = b.x_pts.toString().replace(".", "_");
+
+    if (b.x_pts === 1.2) {
+        imgDiv.data('_type', b.type);
+        $('#booster_' + _x_pts + 'x_' + b.type).append(imgDiv);
+    } else if (b.x_pts === 1.4 && b.ver)
+        $('#booster_' + _x_pts + 'x_v' + b.ver).append(imgDiv);
+    else if (b.x_pts === 1.35 && b.ver)
+        $('#booster_' + _x_pts + 'x_v' + b.ver).append(imgDiv);
+    else if (b.x_pts === 1.3 && b.ver)
+        $('#booster_' + _x_pts + 'x_v' + b.ver).append(imgDiv);
+    else if (b.x_pts === 1.25 && b.ver)
+        $('#booster_' + _x_pts + 'x_v' + b.ver).append(imgDiv);
+    else
+        $('#booster_' + _x_pts + 'x').append(imgDiv);
+
+    _x_pts += 'x';
+
+    if (b.x_pts === 1.4 && b.ver)
+        _x_pts += '_v' + b.ver;
+    else if (b.x_pts === 1.35 && b.ver)
+        _x_pts += '_v' + b.ver;
+    else if (b.x_pts === 1.3 && b.ver)
+        _x_pts += '_v' + b.ver;
+    else if (b.x_pts === 1.25 && b.ver)
+        _x_pts += '_v' + b.ver;
+
+    imgDiv.data('_x_pts', _x_pts);
+
+    imgDiv.draggable({
+        cursor: 'move',
+        stack: '#container',
+        revert: function(event, ui) {
+            if (event &&
+                    (event[0].className.indexOf('team-slot') != -1 ||
+                    event[0].id.indexOf('dont-have') != -1)
+            )
+                return false;
+            else {
+                resetPosition($(this));
+                return true;
+            }
+        },
+    });
+    dupeBoosters.push(imgDiv);
+    return imgDiv;
 }
 
 function getOpponents(tmId, server) {
@@ -529,7 +650,36 @@ function resetPosition(unit) {
         $('#booster_' + _x_pts).append(unit);
 
     // Remove corresponding Clone
-    $('#booster-clone_' + unitId + '_clone').remove();
+    if(unit[0].id.includes('_clone')) {
+        $('#booster-ambush-clone_' + unitId + '_clone').remove();
+    } else {
+        $('#booster-clone_' + unitId + '_clone').remove();
+    }
+    if(!$(unit).hasClass('booster-ambush-clone')) {
+        for(var d in dupeBoosters) {
+            if(dupeBoosters[d][0].id === 'booster_' + $(unit).data('id') + '_clone') {
+                if($(dupeBoosters[d][0]).data('team') === -1) {
+                    $(dupeBoosters[d][0]).remove();
+                    $(dupeBoosters[d][0]).tooltip('dispose');
+                    dupeBoosters.splice(d, 1);
+                    break;
+                }
+            }
+        }
+    } else {
+        if($('#booster_' + unit.data('id')).data('team') === -1) {
+            for(var d in dupeBoosters) {
+            if(dupeBoosters[d][0].id === 'booster_' + $(unit).data('id') + '_clone') {
+                if($(dupeBoosters[d][0]).data('team') === -1) {
+                    $(dupeBoosters[d][0]).remove();
+                    $(dupeBoosters[d][0]).tooltip('dispose');
+                    dupeBoosters.splice(d, 1);
+                    break;
+                }
+            }
+        }
+        }
+    }
 }
 
 function resetAll() {
@@ -730,7 +880,7 @@ function populateUnitDetail(unitId) {
     }
 }
 
-function populateUnitModal(src, selectedId, assigned) {
+function populateUnitModal(src, selectedId, assigned, isAmbush) {
     // Reset
     $('.remove-button-el').hide();
     $('.available-units-el').hide();
@@ -745,6 +895,7 @@ function populateUnitModal(src, selectedId, assigned) {
     if (selectedId !== 0) {
         if (assigned) {
             $('#remove-button').data('id', selectedId);
+            $('#remove-button').data('ambush', isAmbush);
             $('.remove-button-el').show();
         }
 
@@ -799,6 +950,8 @@ function populateUnitModal(src, selectedId, assigned) {
             $('#' + src).closest('.team').find('.team-slot').not('.friend-cap').find('.booster').each(function() {
                 var b = $(this);
                 var unitId = b.data('id');
+                var id = b.id ? b.id : unitId;
+
 
                 var imgDiv = $('<div></div>');
                 imgDiv.append(createImgHtml(getThumb(unitId), 40, false));
@@ -810,18 +963,19 @@ function populateUnitModal(src, selectedId, assigned) {
                 var limitHealthTooltip = 0;
                 var limitAttackTooltip = 0;
                 var limitRecoveryTooltip = 0;
-                for(var x in details[b.id].limit) {
-                    if (details[b.id].limit[x].description.includes("Boosts base HP by ")) limitHealthTooltip += parseInt(details[b.id].limit[x].description.substring(18), 10);
-                    if (details[b.id].limit[x].description.includes("Boosts base ATK by ")) limitAttackTooltip += parseInt(details[b.id].limit[x].description.substring(19), 10);
-                    if (details[b.id].limit[x].description.includes("Boosts base RCV by ")) limitRecoveryTooltip += parseInt(details[b.id].limit[x].description.substring(19), 10);
-                    if (details[b.id].limit[x].description.includes("Reduce base Special Cooldown by ")) limitCdTooltip += parseInt(details[b.id].limit[x].description.substring(32, 33), 10);
-                }
-                limitCdTooltip = Math.abs(limitCdTooltip - cooldowns[b.id - 1][1]);
-                limitHealthTooltip = limitHealthTooltip + units[b.id - 1][12];
-                limitAttackTooltip = limitAttackTooltip + units[b.id - 1][13];
-                limitRecoveryTooltip = limitRecoveryTooltip + units[b.id - 1][14];
                 
-                createTooltip(imgDiv, '<span>' + units[b.id - 1][0] + '</span><br/>' +
+                for(var x in details[id].limit) {
+                    if (details[id].limit[x].description.includes("Boosts base HP by ")) limitHealthTooltip += parseInt(details[id].limit[x].description.substring(18), 10);
+                    if (details[id].limit[x].description.includes("Boosts base ATK by ")) limitAttackTooltip += parseInt(details[id].limit[x].description.substring(19), 10);
+                    if (details[id].limit[x].description.includes("Boosts base RCV by ")) limitRecoveryTooltip += parseInt(details[id].limit[x].description.substring(19), 10);
+                    if (details[id].limit[x].description.includes("Reduce base Special Cooldown by ")) limitCdTooltip += parseInt(details[id].limit[x].description.substring(32, 33), 10);
+                }
+                limitCdTooltip = Math.abs(limitCdTooltip - cooldowns[id - 1][1]);
+                limitHealthTooltip = limitHealthTooltip + units[id - 1][12];
+                limitAttackTooltip = limitAttackTooltip + units[id - 1][13];
+                limitRecoveryTooltip = limitRecoveryTooltip + units[id - 1][14];
+                
+                createTooltip(imgDiv, '<span>' + units[id - 1][0] + '</span><br/>' +
                 '<span class="tooltip-title">HP:</span> ' + limitHealthTooltip + '<br/>'+
                 '<span class="tooltip-title">ATK:</span> ' + limitAttackTooltip + '<br/>'+
                 '<span class="tooltip-title">RCV:</span> ' + limitRecoveryTooltip + '<br/>' +
@@ -901,7 +1055,11 @@ function createCloneInSlot(orig, slot, isAmbush) {
     else
         cloneType = 'clone';
 
-    clone.attr('id', 'booster-clone_' + origId + '_' + cloneType);
+    if(orig[0].id.includes('_clone')) {
+        clone.attr('id', 'booster-ambush-clone_' + origId + '_' + cloneType);
+    } else {
+        clone.attr('id', 'booster-clone_' + origId + '_' + cloneType);
+    }
     clone.data('id', orig.data('id'));
     clone.data('x_pts', orig.data('x_pts'));
     clone.data('type', orig.data('type'));
@@ -909,7 +1067,6 @@ function createCloneInSlot(orig, slot, isAmbush) {
     clone.data('class2', orig.data('class2'));
     clone.removeClass('booster');
     clone.addClass('booster-clone');
-
     clone.css({
         top: 0,
         left: 0
@@ -1005,6 +1162,12 @@ function doSave(tmId, server) {
     localStorage.setItem('lastSave_' + tmId + serverStr, now);
 }
 
+function hasAmbush(tmId) {
+    return tmId.includes('2109') || tmId.includes('2261') || tmId.includes('2299') || tmId.includes('2299')
+            || tmId.includes('2336') || tmId.includes('2387') || tmId.includes('2469') || tmId.includes('2557')
+            || tmId.includes('2659'); 
+}
+
 $(document).ready(function() {
     // Retrieve Settings
     var server = 'glb';
@@ -1047,7 +1210,7 @@ $(document).ready(function() {
                         var opPosTeam = opPosDiv.closest('.team');
                         var teamNum = opPosTeam.data('team');
                         
-                        if (opPos != 5) {
+                        if (opPos != 6) {
                             // Regular Teams
                             for (var i = 0; i < team.length; i++) {
                                 var unitId = team[i];
@@ -1203,15 +1366,29 @@ $(document).ready(function() {
         }
     });
 
-    $('.team-slot').droppable({
+    $('.team-slot, .ambush-team-slot').droppable({
         accept: '.booster',
         activeClass: 'ui-state-hover',
         drop: function(event, ui) {
             // Replace existing units and put the previous unit back
-            if ($(this).find('.booster').length > 0)
-                resetPosition($(this).find('.booster').detach());
-            else if ($(this).find('.booster-clone').length > 0)
+            if ($(this).find('.booster').length > 0) {
+                if($(ui.draggable)[0].id.includes('_clone')) {
+                    if($(this).closest('.team').data('team') === $('#booster_' + $(ui.draggable).data('id')).data('team')) {
+                        resetPosition($(ui.draggable));
+                    } else {
+                        resetPosition($(this).find('.booster').detach());
+                    }
+                } else {
+                    if($(this).closest('.team').data('team') === $('#booster_' + $(ui.draggable).data('id') + '_clone').data('team')) {
+                        resetPosition($(ui.draggable));
+                    } else {
+                        resetPosition($(this).find('.booster').detach());
+                    }
+                }
+            } else if ($(this).find('.booster-clone').length > 0) {
                 $(this).find('.booster-clone').remove();
+            }
+
 
             // Put new unit in place
             $(ui.draggable).detach().css({
@@ -1219,14 +1396,58 @@ $(document).ready(function() {
                 left: 0
             }).prependTo($(this));
 
+
             var assignedTeam = $(this).closest('.team').data('team');
+            var previousTeam = $(ui.draggable).data('team');
+            
+            if($(ui.draggable)[0].id.includes('_clone')) {
+                if(assignedTeam === $('#booster_' + $(ui.draggable).data('id')).data('team')) {
+                    resetPosition($(ui.draggable));
+                    return;
+                }
+            } else {
+                if(assignedTeam === $('#booster_' + $(ui.draggable).data('id') + '_clone').data('team')) {
+                    resetPosition($(ui.draggable));
+                    return;
+                }
+            }
 
             // Remove corresponding Clone if moved to another Team
-            if ($(ui.draggable).data('team') !== assignedTeam)
-                $('#booster-clone_' + $(ui.draggable).data('id') + '_clone').remove();
+            if ($(ui.draggable).data('team') !== assignedTeam) {
+                if($(ui.draggable)[0].id.includes('_clone')) {
+                    $('#booster-ambush-clone_' + $(ui.draggable).data('id') + '_clone').remove();
+                } else {
+                    $('#booster-clone_' + $(ui.draggable).data('id') + '_clone').remove();
+                }
+                
+            }
 
             $(ui.draggable).data('team', assignedTeam);
             $(ui.draggable).addClass('assigned');
+
+            var clonedBoosterData = {
+                id: $(ui.draggable).data('id'),
+                x_pts: $(ui.draggable).data('x_pts'),
+            };
+
+            if($(ui.draggable).data('_type')) {
+                clonedBoosterData.type = $(ui.draggable).data('_type');
+            }
+            if($(ui.draggable).data('ver')) {
+                clonedBoosterData.type = $(ui.draggable).data('ver');
+            }
+
+            var inDupeBoosters = false;
+            for(var d in dupeBoosters) {
+                if(dupeBoosters[d][0].id === 'booster_' + $(ui.draggable).data('id') + '_clone') {
+                    inDupeBoosters = true;
+                    break;
+                }
+            }
+
+            if(!$(ui.draggable).hasClass('booster-ambush-clone') && previousTeam === -1 && !inDupeBoosters && hasAmbush($('#tm-select').val())) {
+                var clonedBooster = createBooster(clonedBoosterData, $('#server-glb').prop('checked'));
+            }
 
             // Mirror to Friend Cap slot if it is empty
             if ($(this).data('slot') == 1)
@@ -1247,7 +1468,18 @@ $(document).ready(function() {
             $(ui.draggable).addClass('assigned-dh');
 
             // Remove corresponding Clone
+            $('#' + ui.draggable[0].id + '_clone').remove();
+            $('#booster-ambush-clone_' + $(ui.draggable).data('id') + '_clone').remove();
             $('#booster-clone_' + $(ui.draggable).data('id') + '_clone').remove();
+
+            for(var d in dupeBoosters) {
+                if(dupeBoosters[d][0].id === 'booster_' + $(ui.draggable).data('id') + '_clone') {
+                    $(dupeBoosters[d][0]).remove();
+                    $(dupeBoosters[d][0]).tooltip('dispose');
+                    dupeBoosters.splice(d, 1);
+                    break;
+                }
+            }
         }
     });
 
@@ -1258,8 +1490,7 @@ $(document).ready(function() {
 
         if ($(this).hasClass('assigned-dh'))
             inDontHave = true;
-
-        populateUnitModal(src, selectedId, inDontHave);
+        populateUnitModal(src, selectedId, inDontHave, $(this)[0].id.includes('_clone'));
         $('#unit-modal').modal();
 
         // Hide tooltip on click
@@ -1271,6 +1502,7 @@ $(document).ready(function() {
         var selectedId = 0;
         var assigned = false;
         var src = $(this).attr('id');
+        var isAmbushBooster = false;
 
         if ($(this).find('.booster').length > 0) {
             selectedId = $(this).find('.booster').data('id');
@@ -1278,20 +1510,28 @@ $(document).ready(function() {
 
             // Hide tooltip on click
             $(this).find('.booster').tooltip('hide');
+
+            if($(this).find('.booster')[0].id.includes('_clone')) {
+                isAmbushBooster = true;
+            }
         } else if ($(this).find('.booster-clone').length > 0) {
             selectedId = $(this).find('.booster-clone').data('id') + '_clone';
             assigned = true;
 
             // Hide tooltip on click
             $(this).find('.booster-clone').tooltip('hide');
+
+            if($(this).find('.booster-clone')[0].id.includes('-ambush')) {
+                isAmbushBooster = true;
+            }
         }
 
-        populateUnitModal(src, selectedId, assigned);
+        populateUnitModal(src, selectedId, assigned, isAmbushBooster);
         $('#unit-modal').modal();
     });
 
     $('#add-button').click(function() {
-        populateUnitModal('dont-have', 0, false);
+        populateUnitModal('dont-have', 0, false, false);
         $('#unit-modal').modal();
     });
 
@@ -1301,7 +1541,6 @@ $(document).ready(function() {
         var b = $('#booster_' + unitId);
 
         var srcDiv = $('#' + src);
-
         if ($(this).hasClass('is-clone')) {
             mirrorToFriendCap(srcDiv.closest('.team'), b, false);
         } else {
@@ -1316,17 +1555,13 @@ $(document).ready(function() {
             } else {
                 b.data('team', $(this).closest('.team').data('team'));
                 b.addClass('assigned');
+                if (srcDiv.find('.booster').length > 0)
+                    resetPosition(srcDiv.find('.booster').detach());
 
-                if (srcDiv.closest('.team').attr('id') != 'ambush-team') {
-                    if (srcDiv.find('.booster').length > 0)
-                        resetPosition(srcDiv.find('.booster').detach());
-
-                    b.detach().css({
-                        top: 0,
-                        left: 0
-                    }).prependTo(srcDiv);
-                } else
-                    createCloneInSlot(b, srcDiv);
+                b.detach().css({
+                    top: 0,
+                    left: 0
+                }).prependTo(srcDiv);
             }
 
             // Mirror to Friend Cap slot if it is empty
@@ -1342,11 +1577,32 @@ $(document).ready(function() {
 
     $('#remove-button').click(function() {
         var deleteId = $(this).data('id');
+        var ambush = $(this).data('ambush');
 
-        if (deleteId.toString().indexOf('_clone') == -1 && deleteId !== 0)
-            resetPosition($('#booster_' + deleteId).detach());
-        else if (deleteId.toString().indexOf('_clone') != -1)
-            $('#booster-clone_' + deleteId).remove();
+        if (deleteId.toString().indexOf('_clone') == -1 && deleteId !== 0) {
+            if(ambush) {
+                resetPosition($('#booster_' + deleteId + '_clone').detach());
+                for(var d in dupeBoosters) {
+                    if(dupeBoosters[d][0].id === 'booster_' + deleteId + '_clone') {
+                        if($(dupeBoosters[d][0]).data('team') === -1) {
+                            $(dupeBoosters[d][0]).remove();
+                            $(dupeBoosters[d][0]).tooltip('dispose');
+                            dupeBoosters.splice(d, 1);
+                            break;
+                        }
+                    }
+                }
+            } else {
+                resetPosition($('#booster_' + deleteId).detach());
+            }
+            
+        } else if (deleteId.toString().indexOf('_clone') != -1) {
+            if(ambush) {
+                $('#booster-ambush-clone_' + deleteId).remove();
+            } else {
+                $('#booster-clone_' + deleteId).remove();
+            }
+        }
 
         $('#unit-modal').modal('hide');
     });
@@ -1848,7 +2104,6 @@ $(document).ready(function() {
                             if(unitSpecial[sp].description.match(matchers[matcher].matcher) && specialFilters.indexOf(matchers[matcher].name) !== -1){
                                 if(specialFilters.length > 1) {
                                     specialMatches.push(matchers[matcher].name);
-                                    console.log();
                                     if(specialFilters.filter(value => specialMatches.includes(value)).length === specialFilters.length) {
                                         $(this).removeClass('special-filtered');
                                         break;
