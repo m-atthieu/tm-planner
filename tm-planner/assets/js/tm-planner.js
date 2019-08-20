@@ -1233,15 +1233,26 @@ function recChar(e) {
     } else {
         boosters = tm_boosters_jpn[tmId];
     }
-    console.log(pos);
+
     $('.booster, booster-ambush-clone').removeClass('rec-char');
     
     for(var i = 0; i < boosters.length; i++) {
         var b = boosters[i];
-        if(b.rec && b.rec === parseInt(pos)) {
-            $('#booster_' + b.id).addClass('rec-char');
-            if($('#booster_' + b.id + '_clone').length > 0) {
-                $('#booster_' + b.id + '_clone').addClass('rec-char');
+        if(b.rec) {
+            for(var j = 0; j < b.rec.length; j++) {
+                if(b.rec[j] === pos) {
+                    $('#booster_' + b.id).addClass('rec-char');
+                    if($('#booster_' + b.id + '_clone').length > 0) {
+                        $('#booster_' + b.id + '_clone').addClass('rec-char');
+                    }
+                    break;
+                } else if(b.rec[j] === pos + '_alt') {
+                    $('#booster_' + b.id).addClass('rec-char-alt');
+                    if($('#booster_' + b.id + '_clone').length > 0) {
+                        $('#booster_' + b.id + '_clone').addClass('rec-char-alt');
+                    }
+                    break;
+                }
             }
         }
     }
@@ -1250,7 +1261,7 @@ function recChar(e) {
     
     setTimeout(function() { 
         $('#snackbar').removeClass('show');
-    }, 3000);
+    }, 5000);
 }
 
 $(document).ready(function() {

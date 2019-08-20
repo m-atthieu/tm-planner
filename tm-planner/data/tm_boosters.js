@@ -7543,17 +7543,17 @@ var tm_boosters = {
         },
     ],
 
-    // ========== Smoothie & Oven ==========
+    // ========== Doflamingo ==========
     2443: [
         {   // TM RR Law
             id: 2438,
             x_pts: 2,
-            rec: 5
+            rec: ['5']
         },
         {   // TM RR Cora
             id: 2437,
             x_pts: 1.75,
-            rec: 5
+            rec: ['5']
         },
         {   // Cracker
             id: 2465,
@@ -7566,7 +7566,7 @@ var tm_boosters = {
         {   // Usopp
             id: 2439,
             x_pts: 1.35,
-            rec: 5
+            rec: ['5']
         },
         {   // Ideo
             id: 2420,
@@ -7578,7 +7578,8 @@ var tm_boosters = {
         },
         {   // Elizabello II
             id: 2424,
-            x_pts: 1.35
+            x_pts: 1.35,
+            rec: ['5_alt']
         },
         {   // Sai
             id: 2426,
@@ -7604,7 +7605,7 @@ var tm_boosters = {
             id: 2441,
             type: 'legend',
             x_pts: 1.2,
-            rec: 5
+            rec: ['5']
         },
         {   // TM RR Jinbe
             id: 2466,
@@ -7644,7 +7645,8 @@ var tm_boosters = {
         {   // Cracker
             id: 2158,
             type: 'raid',
-            x_pts: 1.2
+            x_pts: 1.2,
+            rec: ['5_alt']
         },
         {   // Arlong
             id: 2356,
@@ -7659,12 +7661,14 @@ var tm_boosters = {
         {   // Zoro
             id: 2097,
             type: 'raid',
-            x_pts: 1.2
+            x_pts: 1.2,
+            rec: ['5_alt']
         },
         {   // Judge
             id: 2281,
             type: 'raid',
-            x_pts: 1.2
+            x_pts: 1.2,
+            rec: ['5_alt']
         },
         {   // Akainu
             id: 1298,
@@ -7674,12 +7678,14 @@ var tm_boosters = {
         {   // Senor Pink
             id: 1943,
             type: 'raid',
-            x_pts: 1.2
+            x_pts: 1.2,
+            rec: ['5_alt']
         },
         {   // Blackbeard V2
             id: 2197,
             type: 'raid',
-            x_pts: 1.2
+            x_pts: 1.2,
+            rec: ['5_alt']
         },
         {   // Bartolomeo
             id: 1879,
@@ -7704,7 +7710,8 @@ var tm_boosters = {
         {   // Machvise
             id: 1628,
             type: 'coliseum',
-            x_pts: 1.2
+            x_pts: 1.2,
+            rec: ['5_alt']
         },
         {   // Moria
             id: 1141,
@@ -7774,7 +7781,8 @@ var tm_boosters = {
         {   // Amande
             id: 2327,
             type: 'fortnight',
-            x_pts: 1.2
+            x_pts: 1.2,
+            rec: ['5_alt']
         },
         {   // Inuarashi
             id: 2219,
@@ -7858,7 +7866,8 @@ var tm_boosters = {
         },
         {   // Jack
             id: 2175,
-            x_pts: 1.1
+            x_pts: 1.1,
+            rec: ['5_alt']
         },
         {   // Eneru
             id: 2211,
@@ -7868,7 +7877,7 @@ var tm_boosters = {
             id: 2261,
             type: 'tm',
             x_pts: 1.2,
-            rec: 5
+            rec: ['5']
         },
         {   // Boa Hancock
             id: 2299,
