@@ -614,6 +614,7 @@ function init(tmId, server) {
 
     var opponents = tm_opponents[tmId];
     var bossInfo = tm_boss_info[tmId];
+    var bird = hasAmbush(tmId) ? 1.5 : 1.0;
 
     if (tmId == 2064 && server == 'jpn')
         opponents = tm_opponents['2064_jpn'];
@@ -623,13 +624,14 @@ function init(tmId, server) {
             $('#boss-hp-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][3] + (bossInfo[opId][3] * ($('#tm-level-slider').val() - 1) * bossInfo[opId][6]))));
             $('#boss-atk-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][4] + (bossInfo[opId][4] * ($('#tm-level-slider').val() - 1) * bossInfo[opId][7]))));
             $('#boss-cd-' + (bossInfo[opId][1] + 1)).text(bossInfo[opId][5]);
-            $('#boss-pts-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][8] + (bossInfo[opId][8] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][9]))));
+            $('#boss-pts-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bird * parseFloat($('.x_pts')[bossInfo[opId][1]].innerHTML) * (bossInfo[opId][8] + (bossInfo[opId][8] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][9])))));
         }
     } else {
         for (var i = 0; i < opponents.length; i++) {
             $('#boss-hp-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][2] + (bossInfo[i][2] * ($('#tm-level-slider').val() - 1) * bossInfo[i][5]))));
             $('#boss-atk-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][3] + (bossInfo[i][3] * ($('#tm-level-slider').val() - 1) * bossInfo[i][6]))));
             $('#boss-cd-' + (i + 1)).text(bossInfo[i][4]);
+            $('#boss-pts-' + (i + 1)).text(formatNumber(Math.round(bird * parseFloat($('.x_pts')[i].innerHTML) * (bossInfo[opId][7] + (bossInfo[opId][7] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][8])))));
         }
     }
 
@@ -1126,14 +1128,15 @@ function updatePts(btn) {
     var server = $('#tm-select').val().substring($('#tm-select').val().indexOf('_') + 1).trim();
     var opponents = tm_opponents[tmId];
     var bossInfo = tm_boss_info[tmId];
+    var bird = hasAmbush(tmId) ? 1.5 : 1.0;
 
     if ((tmId > 1889 && server == 'glb') || (tmId > 2064 && server == 'jpn')) {
         for (var opId in opponents) {
-            $('#boss-pts-' + (bossInfo[opId][1] + 1)).text(formatNumber(parseFloat($('.x_pts')[bossInfo[opId][1]].innerHTML) * (bossInfo[opId][8] + (bossInfo[opId][8] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][9]))));
+            $('#boss-pts-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bird * parseFloat($('.x_pts')[bossInfo[opId][1]].innerHTML) * (bossInfo[opId][8] + (bossInfo[opId][8] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][9])))));
         }
     } else {
         for (var i = 0; i < opponents.length; i++) {
-            $('#boss-pts-' + (i + 1)).text(formatNumber(parseFloat($('.x_pts')[i].innerHTML) * (bossInfo[opId][7] + (bossInfo[opId][7] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][8]))));
+            $('#boss-pts-' + (i + 1)).text(formatNumber(Math.round(bird * parseFloat($('.x_pts')[i].innerHTML) * (bossInfo[opId][7] + (bossInfo[opId][7] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][8])))));
         }
     }
 }
@@ -1180,9 +1183,9 @@ function doSave(tmId, server) {
 }
 
 function hasAmbush(tmId) {
-    return tmId.includes('2109') || tmId.includes('2261') || tmId.includes('2299') || tmId.includes('2299')
-            || tmId.includes('2336') || tmId.includes('2387') || tmId.includes('2469') || tmId.includes('2557')
-            || tmId.includes('2659'); 
+    return tmId.toString().includes('2109') || tmId.toString().includes('2261') || tmId.toString().includes('2299') || tmId.toString().includes('2299')
+            || tmId.toString().includes('2336') || tmId.toString().includes('2387') || tmId.toString().includes('2469') || tmId.toString().includes('2557')
+            || tmId.toString().includes('2659'); 
 }
 
 $(document).ready(function() {
@@ -2159,6 +2162,7 @@ $(document).ready(function() {
 
         var opponents = tm_opponents[tmId];
         var bossInfo = tm_boss_info[tmId];
+        var bird = hasAmbush(tmId) ? 1.5 : 1.0;
 
         if (tmId == 2064 && server == 'jpn')
             opponents = tm_opponents['2064_jpn'];
@@ -2168,14 +2172,14 @@ $(document).ready(function() {
                 $('#boss-hp-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][3] + (bossInfo[opId][3] * ($('#tm-level-slider').val() - 1) * bossInfo[opId][6]))));
                 $('#boss-atk-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][4] + (bossInfo[opId][4] * ($('#tm-level-slider').val() - 1) * bossInfo[opId][7]))));
                 $('#boss-cd-' + (bossInfo[opId][1] + 1)).text(bossInfo[opId][5]);
-                $('#boss-pts-' + (bossInfo[opId][1] + 1)).text(formatNumber(parseFloat($('.x_pts')[bossInfo[opId][1]].innerHTML) * (bossInfo[opId][8] + (bossInfo[opId][8] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][9]))));
+                $('#boss-pts-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bird * parseFloat($('.x_pts')[bossInfo[opId][1]].innerHTML) * (bossInfo[opId][8] + (bossInfo[opId][8] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][9])))));
             }
         } else {
             for (var i = 0; i < opponents.length; i++) {
                 $('#boss-hp-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][2] + (bossInfo[i][2] * ($('#tm-level-slider').val() - 1) * bossInfo[i][5]))));
                 $('#boss-atk-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][3] + (bossInfo[i][3] * ($('#tm-level-slider').val() - 1) * bossInfo[i][6]))));
                 $('#boss-cd-' + (i + 1)).text(bossInfo[i][4]);
-                $('#boss-pts-' + (i + 1)).text(formatNumber(parseFloat($('.x_pts')[i].innerHTML) * (bossInfo[opId][7] + (bossInfo[opId][7] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][8]))));
+                $('#boss-pts-' + (i + 1)).text(formatNumber(Math.round(bird * parseFloat($('.x_pts')[i].innerHTML) * (bossInfo[opId][7] + (bossInfo[opId][7] *  ($('#tm-level-slider').val() - 1) * bossInfo[opId][8])))));
             }
         }
     });
@@ -2183,22 +2187,24 @@ $(document).ready(function() {
     $('#tm-level-label').on('input', function() {
         var level = $('#tm-level-label').val() === '' || parseInt($('#tm-level-label').val()) <= 0 || parseInt($('#tm-level-label').val()) > 400  || !Number.isInteger(parseInt($('#tm-level-label').val())) ? 1 : parseInt($('#tm-level-label').val());
         $('#tm-level-slider').val(level);
+
         var opponents = tm_opponents[tmId];
         var bossInfo = tm_boss_info[tmId];
+        var bird = hasAmbush(tmId) ? 1.5 : 1.0;
 
         if ((tmId > 1889 && server == 'glb') || (tmId > 2064 && server == 'jpn')) {
             for (var opId in opponents) {
                 $('#boss-hp-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][3] + (bossInfo[opId][3] * (level - 1) * bossInfo[opId][6]))));
                 $('#boss-atk-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bossInfo[opId][4] + (bossInfo[opId][4] * (level - 1) * bossInfo[opId][7]))));
                 $('#boss-cd-' + (bossInfo[opId][1] + 1)).text(bossInfo[opId][5]);
-                $('#boss-pts-' + (bossInfo[opId][1] + 1)).text(formatNumber(parseFloat($('.x_pts')[bossInfo[opId][1]].innerHTML) * (bossInfo[opId][8] + (bossInfo[opId][8] *  (level - 1) * bossInfo[opId][9]))));
+                $('#boss-pts-' + (bossInfo[opId][1] + 1)).text(formatNumber(Math.round(bird * parseFloat($('.x_pts')[bossInfo[opId][1]].innerHTML) * (bossInfo[opId][8] + (bossInfo[opId][8] *  (level - 1) * bossInfo[opId][9])))));
             }
         } else {
             for (var i = 0; i < opponents.length; i++) {
                 $('#boss-hp-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][2] + (bossInfo[i][2] * (level - 1) * bossInfo[i][5]))));
                 $('#boss-atk-' + (i + 1)).text(formatNumber(Math.round(bossInfo[i][3] + (bossInfo[i][3] * (level - 1) * bossInfo[i][6]))));
                 $('#boss-cd-' + (i + 1)).text(bossInfo[i][4]);
-                $('#boss-pts-' + (i + 1)).text(formatNumber(parseFloat($('.x_pts')[i].innerHTML) * (bossInfo[opId][7] + (bossInfo[opId][7] *  (level - 1) * bossInfo[opId][8]))));
+                $('#boss-pts-' + (i + 1)).text(formatNumber(Math.round(bird * parseFloat($('.x_pts')[i].innerHTML) * (bossInfo[opId][7] + (bossInfo[opId][7] *  (level - 1) * bossInfo[opId][8])))));
             }
         }
     });
