@@ -206,7 +206,7 @@ var tm_boss_info = {
         1906: ['Sugar', 2, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> Change all orbs to [BOMB], [TND], [EMPTY], 1.5x ATK Boost for Mobs, 2 Turn HP & [PSY] Barrier for Mobs <br/>' +
         '</span>', 480000, 1755, 1, 0.1, 0.05, 1200, 0.1],
         2144: ['Diamante', 3, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> 3 Turn Special Rewind for Top & Middle Row, 5 Turn Special Silence for Bottom Right Character, 10 Turn End of Turn Damage (5k) <br/>' + 
-        '<span style="tooltip-title">Turn 2:</span> Change to [QCK], 3Turn 80% Damage Reduction from [DEX], Give all [EMPTY] orbs <br/>' +
+        '<span style="tooltip-title">Turn 2:</span> Change to [QCK], 3 Turn 80% Damage Reduction from [DEX], Give all [EMPTY] orbs <br/>' +
         '</span>', 730000, 4401, 2, 0.1, 0.05, 1200, 0.1],
         2443: ['Doflamingo', 4, '<span class="tooltiptext"><span class="tooltip-title">Stage 6:</span> <br/>' +
         '<span class="tooltip-title">Preemptives:</span> 1 Turn Special Silence, 4 Turn Bind for Bottom Row <br/>' +
