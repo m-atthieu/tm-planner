@@ -228,18 +228,18 @@
 
 @keyframes glow-rec {
     from {
-        box-shadow: 0 0 8px -3px #8c6cff;
+        box-shadow: 0 0 10px -4px #8c6cff;
     }
     to {
-        box-shadow: 0 0 8px 3px #8c6cff;
+        box-shadow: 0 0 10px 4px #8c6cff;
     }
 }
 
 @keyframes glow-rec-alt {
     from {
-        box-shadow: 0 0 8px -3px #FFFF66;
+        box-shadow: 0 0 10px -4px #FFFF66;
     }
     to {
-        box-shadow: 0 0 8px 3px #FFFF66;
+        box-shadow: 0 0 10px 4px #FFFF66;
     }
 }
