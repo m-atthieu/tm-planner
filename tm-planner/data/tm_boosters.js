@@ -500,8 +500,7 @@ var tm_boosters = {
         {   // Arlong
             id: 1527,
             type: 'coliseum',
-            x_pts: 1.2,
-            rec: ['2_alt']
+            x_pts: 1.2
         },
         {   // Blenheim
             id: 1528,
@@ -7568,7 +7567,7 @@ var tm_boosters = {
         {   // Usopp
             id: 2439,
             x_pts: 1.35,
-            rec: ['5']
+            rec: ['5', '4_alt', '1_alt']
         },
         {   // Ideo
             id: 2420,
@@ -7577,7 +7576,8 @@ var tm_boosters = {
         },
         {   // Hajrudin
             id: 2422,
-            x_pts: 1.35
+            x_pts: 1.35,
+            rec: ['5_alt', '4_alt']
         },
         {   // Elizabello II
             id: 2424,
@@ -7587,7 +7587,7 @@ var tm_boosters = {
         {   // Sai
             id: 2426,
             x_pts: 1.35,
-            rec: ['1']
+            rec: ['1', '5_alt']
         },
         {   // Support Orlumbus
             id: 2436,
@@ -7614,18 +7614,20 @@ var tm_boosters = {
         {   // TM RR Jinbe
             id: 2466,
             type: 'tm_rr',
-            x_pts: 1.2
+            x_pts: 1.2,
+            rec: ['5_alt']
         },
         {   // TM RR Pound
             id: 2467,
             type: 'tm_rr',
-            x_pts: 1.2
+            x_pts: 1.2,
+            rec: ['5_alt', '4']
         },
         {   // Young Big Mom
             id: 2381,
             type: 'other',
             x_pts: 1.2,
-            rec: ['4', '1']
+            rec: ['4', '1', '5_alt']
         },
         {   // Fat Luffy
             id: 2033,
@@ -7656,7 +7658,8 @@ var tm_boosters = {
         {   // Arlong
             id: 2356,
             type: 'raid',
-            x_pts: 1.2
+            x_pts: 1.2,
+            rec: ['2_alt', '1_alt']
         },
         {   // Lucci
             id: 2015,
@@ -7691,13 +7694,13 @@ var tm_boosters = {
             id: 2197,
             type: 'raid',
             x_pts: 1.2,
-            rec: ['5_alt', '2_alt']
+            rec: ['5_alt', '2_alt', '1_alt']
         },
         {   // Bartolomeo
             id: 1879,
             type: 'raid',
             x_pts: 1.2,
-            rec: ['2']
+            rec: ['2', '1_alt']
         },
         {   // Smoothie
             id: 2375,
@@ -7787,13 +7790,14 @@ var tm_boosters = {
         {   // Wadatsumi
             id: 1949,
             type: 'fortnight',
-            x_pts: 1.2
+            x_pts: 1.2,
+            rec: ['4_alt']
         },
         {   // Amande
             id: 2327,
             type: 'fortnight',
             x_pts: 1.2,
-            rec: ['5_alt']
+            rec: ['5_alt', '1_alt']
         },
         {   // Inuarashi
             id: 2219,
@@ -7885,7 +7889,8 @@ var tm_boosters = {
         },
         {   // Eneru
             id: 2211,
-            x_pts: 1.1
+            x_pts: 1.1,
+            rec: ['2']
         },
         {   // Shanks
             id: 2261,
@@ -7895,11 +7900,13 @@ var tm_boosters = {
         },
         {   // Boa Hancock
             id: 2299,
-            x_pts: 1.1
+            x_pts: 1.1,
+            rec: ['1_alt']
         },
         {   // Law
             id: 2336,
-            x_pts: 1.1
+            x_pts: 1.1,
+            rec: ['1_alt', '5_alt']
         },
         {   // Kaido
             id: 2387,
@@ -7909,7 +7916,8 @@ var tm_boosters = {
         },
         {   // Nami
             id: 2362,
-            x_pts: 1.1
+            x_pts: 1.1,
+            rec: ['5_alt']
         },
         {   // Luffy 5+
             id: 1387,
@@ -7938,7 +7946,7 @@ var tm_boosters = {
         {   // Robin 5+
             id: 1549,
             x_pts: 1,
-            rec: ['1', '4_alt']
+            rec: ['1', '4_alt', '5_alt']
         },
         {   // Franky 5+
             id: 1550,
