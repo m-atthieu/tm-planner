@@ -213,9 +213,13 @@
 }
 
 .rec-char {
-    box-shadow: 0px 0px 6px 2px #8c6cff;
+    box-shadow: 0px 0px 8px 3px #8c6cff;
 }
 
 .rec-char-alt {
-    box-shadow: 0px 0px 6px 2px #FFFF66;
-} 
+    box-shadow: 0px 0px 8px 3px #FFFF66;
+}
+
+.rec-char-dh {
+    box-shadow: none !important;
+}

@@ -654,6 +654,8 @@ function resetPosition(unit) {
     else
         $('#booster_' + _x_pts).append(unit);
 
+    $(unit).removeClass('rec-char-dh');
+
     // Remove corresponding Clone
     if(unit[0].id.includes('_clone')) {
         $('#booster-ambush-clone_' + unitId + '_clone').remove();
@@ -1235,6 +1237,7 @@ function recChar(e) {
     }
 
     $('.booster, booster-ambush-clone').removeClass('rec-char');
+    $('.booster, booster-ambush-clone').removeClass('rec-char-alt');
     
     for(var i = 0; i < boosters.length; i++) {
         var b = boosters[i];
@@ -1485,6 +1488,7 @@ $(document).ready(function() {
                 $(this).find('.booster-clone').remove();
             }
 
+            $(ui.draggable).addClass('rec-char-dh');
 
             // Put new unit in place
             $(ui.draggable).detach().css({
@@ -1562,6 +1566,7 @@ $(document).ready(function() {
 
             $(ui.draggable).data('team', -1);
             $(ui.draggable).addClass('assigned-dh');
+            $(ui.draggable).addClass('rec-char-dh');
 
             // Remove corresponding Clone
             $('#' + ui.draggable[0].id + '_clone').remove();
@@ -1640,6 +1645,8 @@ $(document).ready(function() {
         if ($(this).hasClass('is-clone')) {
             mirrorToFriendCap(srcDiv.closest('.team'), b, false);
         } else {
+            $(b).addClass('rec-char-dh');
+            
             if (src == 'dont-have') {
                 b.data('team', -1);
                 b.addClass('assigned-dh');
