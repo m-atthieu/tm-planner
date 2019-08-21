@@ -1206,17 +1206,33 @@ function hasAmbush(tmId) {
 function calculateTotalPoints(currentLevel, tmId, server) {
     var opponents = tm_opponents[tmId];
     var bossInfo = tm_boss_info[tmId];
+    var ptsTotalCurrentLevel = 0;
     var ptsTotal = 0;
     var bird = hasAmbush(tmId) ? 1.5 : 1.0;
     
+    //Calculate point total for current level only
+    if ((tmId > 1889 && server == 'glb') || (tmId > 2064 && server == 'jpn')) {
+        for (var opId in opponents) {
+            ptsTotalCurrentLevel += Math.round(bird * parseFloat($('.x_pts')[bossInfo[opId][1]].innerHTML) * (bossInfo[opId][8] + (bossInfo[opId][8] *  ((currentLevel - 1) * bossInfo[opId][9]))));
+        }
+    } else {
+        for (var i = 0; i < opponents.length; i++) {
+            ptsTotalCurrentLevel += Math.round(bird * parseFloat($('.x_pts')[j].innerHTML) * (bossInfo[opId][7] + (bossInfo[opId][7] *  ((currentLevel - 1) * bossInfo[opId][8]))));
+        }
+    }
+
+    $('#tm-point-total-curr-label').text(ptsTotalCurrentLevel);
+
+    //Calculate overall point total
     for(var i = 0; i < currentLevel; i++) {
         if ((tmId > 1889 && server == 'glb') || (tmId > 2064 && server == 'jpn')) {
             for (var opId in opponents) {
-                ptsTotal += Math.round(bird * parseFloat($('.x_pts')[bossInfo[opId][1]].innerHTML) * (bossInfo[opId][8] + (bossInfo[opId][8] *  ((currentLevel - 1) * bossInfo[opId][9]))));
+                ptsTotal += Math.round(bird * parseFloat($('.x_pts')[bossInfo[opId][1]].innerHTML) * (bossInfo[opId][8] + (bossInfo[opId][8] *  (i * bossInfo[opId][9]))));
+                
             }
         } else {
-            for (var i = 0; i < opponents.length; i++) {
-                ptsTotal += Math.round(bird * parseFloat($('.x_pts')[i].innerHTML) * (bossInfo[opId][7] + (bossInfo[opId][7] *  ((currentLevel - 1) * bossInfo[opId][8]))));
+            for (var j = 0; j < opponents.length; j++) {
+                ptsTotal += Math.round(bird * parseFloat($('.x_pts')[j].innerHTML) * (bossInfo[opId][7] + (bossInfo[opId][7] *  (i * bossInfo[opId][8]))));
             }
         }
     }
