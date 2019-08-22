@@ -132,9 +132,15 @@
     filter: brightness(0.5);
 }
 
-.booster-ambush-clone > img {
-    -webkit-filter: brightness(2);
-    filter: brightness(2);
+.booster-ambush-clone:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255,0,0, 0.5);
 }
 
 #export-url-div,
