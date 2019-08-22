@@ -371,6 +371,13 @@ function createBooster(booster, s) {
     imgDiv.append(createImgHtml(getThumb(b.id), 40, false));
     imgDiv.addClass('booster');
     imgDiv.addClass('booster-ambush-clone');
+
+    if($('#booster_' + b.id).hasClass('rec-char')) {
+        imgDiv.addClass('rec-char');
+    } else {
+        imgDiv.addClass('rec-char-alt');
+    }
+
     imgDiv.data('id', b.id);
     imgDiv.data('x_pts', b.x_pts);
     // Info in tooltip
@@ -655,6 +662,7 @@ function resetPosition(unit) {
         $('#booster_' + _x_pts).append(unit);
 
     $(unit).removeClass('rec-char-dh');
+    $(unit).removeClass('rec-char-alt-dh');
 
     // Remove corresponding Clone
     if(unit[0].id.includes('_clone')) {
@@ -1504,7 +1512,12 @@ $(document).ready(function() {
                 $(this).find('.booster-clone').remove();
             }
 
-            $(ui.draggable).addClass('rec-char-dh');
+            if($(ui.draggable).hasClass('rec-char')) {
+                $(ui.draggable).addClass('rec-char-dh');
+            } else {
+                $(ui.draggable).addClass('rec-char-alt-dh');
+            }
+            
 
             // Put new unit in place
             $(ui.draggable).detach().css({
@@ -1582,7 +1595,12 @@ $(document).ready(function() {
 
             $(ui.draggable).data('team', -1);
             $(ui.draggable).addClass('assigned-dh');
-            $(ui.draggable).addClass('rec-char-dh');
+            if($(ui-draggable).hasClass('rec-char')) {
+                $(ui.draggable).addClass('rec-char-dh');
+            } else {
+                $(ui.draggable).addClass('rec-char-alt-dh');
+            }
+            
 
             // Remove corresponding Clone
             $('#' + ui.draggable[0].id + '_clone').remove();
@@ -1661,7 +1679,12 @@ $(document).ready(function() {
         if ($(this).hasClass('is-clone')) {
             mirrorToFriendCap(srcDiv.closest('.team'), b, false);
         } else {
-            $(b).addClass('rec-char-dh');
+            if($(b).hasClass('rec-char')) {
+                $(b).addClass('rec-char-dh');
+            } else {
+                $(b).addClass('rec-char-alt-dh');
+            }
+            
             
             if (src == 'dont-have') {
                 b.data('team', -1);

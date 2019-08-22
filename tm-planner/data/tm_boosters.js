@@ -7034,7 +7034,8 @@ var tm_boosters = {
     2469: [
         {   // Cracker
             id: 2465,
-            x_pts: 2.2
+            x_pts: 2.2,
+            rec: ['6']
         },
         {   // Jinbe
             id: 2466,

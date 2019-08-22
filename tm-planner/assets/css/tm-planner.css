@@ -230,6 +230,12 @@
 
 .rec-char-dh {
     box-shadow: none !important;
+    animation: none !important;
+}
+
+.rec-char-alt-dh {
+    box-shadow: none !important;
+    animation: none !important;
 }
 
 @keyframes glow-rec {
