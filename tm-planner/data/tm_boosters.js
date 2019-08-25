@@ -7714,7 +7714,7 @@ var tm_boosters = {
             x_pts: 1.2
         },
         {   // Orlumbus
-            id: 1127,
+            id: 1584,
             type: 'coliseum',
             x_pts: 1.2
         },
