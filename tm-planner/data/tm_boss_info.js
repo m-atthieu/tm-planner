@@ -215,6 +215,7 @@ var tm_boss_info = {
         '<span class="tooltip-title">Preemptives:</span> Delay Immunity, 3 Turn 1.2x Chain Limit, 3 Turn 50% Damage Reduction, 2 Turn 2-hit Good Barrier <br/>' +
         '<span class="tooltip-title">Every Turn:</span> Gives all [BLOCK] orbs <br/>' +
         '<span class="tooltip-title">Every 3 Turns:</span> 3 Turn Anti-Heal, 4 Turn 1.5x ATK Boost, <br/>' +
+        '<span class="tooltip-title">Interrupt (ATK Boost):</span> Clears buffs, 10 Turn Special Silence for all <br/>' +
         '<span style="tooltip-title">HP < 20%:</span> 1600000 Damage <br/>' +
         '</span>', 1100000, 4500, 1, 0.1, 0.05, 5000, 0.1]
     },
