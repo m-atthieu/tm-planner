@@ -1291,6 +1291,55 @@ function recChar(e) {
     }, 5000);
 }
 
+var specialFilters = [];
+function specialFiltering() {
+    if (specialFilters.length == 0) {
+        // Clear filters if no Class Filters are currently selected
+        $('.special-filtered').removeClass('special-filtered');
+    } else {
+        $('.booster, .booster-clone').each(function() {
+            var unitSpecial = details[$(this).data('id')].special;
+            var specialMatches = [];
+
+            $(this).addClass('special-filtered');
+            
+            if(Array.isArray(unitSpecial)) {
+                for(var matcher in matchers) {
+                    for(var sp in unitSpecial) {
+                        if(unitSpecial[sp].description.match(matchers[matcher].matcher) && specialFilters.indexOf(matchers[matcher].name) !== -1){
+                            if(specialFilters.length > 1) {
+                                specialMatches.push(matchers[matcher].name);
+                                if(specialFilters.filter(value => specialMatches.includes(value)).length === specialFilters.length) {
+                                    $(this).removeClass('special-filtered');
+                                    break;
+                                }
+                            } else {
+                                $(this).removeClass('special-filtered');
+                                break;
+                            }
+                        }
+                    }
+                }
+            } else {
+                for(var matcher in matchers) {
+                    if(unitSpecial.match(matchers[matcher].matcher) && specialFilters.indexOf(matchers[matcher].name) !== -1){
+                        if(specialFilters.length > 1) {
+                            specialMatches.push(matchers[matcher].name);
+                            if(specialFilters.filter(value => specialMatches.includes(value)).length === specialFilters.length) {
+                                $(this).removeClass('special-filtered');
+                                break;
+                            }
+                        } else {
+                            $(this).removeClass('special-filtered');
+                            break;
+                        }
+                    }
+                }
+            }  
+        });
+    }
+}
+
 $(document).ready(function() {
     // Retrieve Settings
     var server = 'glb';
@@ -2218,7 +2267,6 @@ $(document).ready(function() {
     });
 
     //Basic Special Filter
-    var specialFilters = [];
     $('.spec-filter').click(function() {
         var filter = $(this).data('filter');
 
@@ -2230,52 +2278,7 @@ $(document).ready(function() {
             specialFilters.push(filter);
         }
 
-        if (specialFilters.length == 0) {
-            // Clear filters if no Class Filters are currently selected
-            $('.special-filtered').removeClass('special-filtered');
-        } else {
-            $('.booster, .booster-clone').each(function() {
-                var unitSpecial = details[$(this).data('id')].special;
-                var specialMatches = [];
-
-                $(this).addClass('special-filtered');
-                
-                if(Array.isArray(unitSpecial)) {
-                    for(var matcher in matchers) {
-                        for(var sp in unitSpecial) {
-                            if(unitSpecial[sp].description.match(matchers[matcher].matcher) && specialFilters.indexOf(matchers[matcher].name) !== -1){
-                                if(specialFilters.length > 1) {
-                                    specialMatches.push(matchers[matcher].name);
-                                    if(specialFilters.filter(value => specialMatches.includes(value)).length === specialFilters.length) {
-                                        $(this).removeClass('special-filtered');
-                                        break;
-                                    }
-                                } else {
-                                    $(this).removeClass('special-filtered');
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    for(var matcher in matchers) {
-                        if(unitSpecial.match(matchers[matcher].matcher) && specialFilters.indexOf(matchers[matcher].name) !== -1){
-                            if(specialFilters.length > 1) {
-                                specialMatches.push(matchers[matcher].name);
-                                if(specialFilters.filter(value => specialMatches.includes(value)).length === specialFilters.length) {
-                                    $(this).removeClass('special-filtered');
-                                    break;
-                                }
-                            } else {
-                                $(this).removeClass('special-filtered');
-                                break;
-                            }
-                        }
-                    }
-                }
-                
-            });
-        }
+        specialFiltering();
     });
 
     //TM Slider Update
@@ -2338,6 +2341,26 @@ $(document).ready(function() {
     // Help button
     $('#help-button').click(function() {
         $('#help-modal').modal();
+    });
+
+    // Specials Filtering button
+    $('#specials-button').click(function() {
+        $('#more-specials-filter-modal').modal();
+    });
+
+    //Additional Specials Filtering
+    $('.list-group-item').click(function() {
+        var filter = $(this).data('filter');
+
+        if($(this).hasClass('active')) {
+            $(this).removeClass('active');
+            specialFilters.splice(specialFilters.indexOf(filter), 1);
+        } else {
+            $(this).addClass('active');
+            specialFilters.push(filter);
+        }
+
+        specialFiltering();
     });
 
     // TM selection dropdown

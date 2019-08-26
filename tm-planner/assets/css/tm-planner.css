@@ -100,9 +100,10 @@
     display: inline-block;
 }
 
-#help-button {
+#help-button, #specials-button {
     width: 100%;
     margin: 5px;
+    white-space: normal;
 }
 
 .remove-button-el,

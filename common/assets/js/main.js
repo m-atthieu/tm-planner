@@ -129,6 +129,19 @@ $(document).ready(function() {
         nightModeToggle(nightMode);
     });
 
+    var str = '<ui>';
+    matchers.forEach(function(matcher) {
+        if(matcher.target === 'special' 
+            && matcher.name !== 'Silence reducers' && matcher.name !== 'Enemy Threshold Damage Reduction reducer' && matcher.name !== 'Chain Multiplier Limit and Chain Lock reducer'
+            && matcher.name !== 'Special cooldown reducers' && matcher.name !== 'Crew ATK DOWN reducer' && matcher.name !== 'Despair reducers'
+            && matcher.name !== 'Enemy Percent Damage Reduction reducer' && matcher.name !== 'Enemy Increased Defense reducer' && matcher.name !== 'Defense reducers') {
+            str += '<li class="list-group-item" data-filter="' + matcher.name + '">'+ matcher.name + '</li>';
+        }
+    });
+
+    str += '</ui>';
+    $('.list-group').html(str);
+
     /*$('#header').load('/common/header.html', function() {
         if (typeof highlightNavbar !== 'undefined')
             highlightNavbar();

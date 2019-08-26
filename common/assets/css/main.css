@@ -38,6 +38,39 @@ body {
     background-color: rgb(25, 25, 25);
 }
 
+.list-group {
+    overflow-y: scroll;
+    max-height: 300px;
+}
+
+.list-group-item {
+    cursor: pointer;
+    color: #212529;
+    border: 1px solid #aaa;
+}
+
+.list-group-item:hover {
+    background: rgb(230,230,230) !important;
+}
+
+.active.list-group-item:hover {
+    background: darkred !important;
+}
+
+.active.list-group-item {
+    background: red !important;
+    color: white !important;
+}
+
+.night-mode .list-group-item:hover {
+    background: #bb4040 !important;
+}
+
+.night-mode .list-group-item {
+    background: rgb(25, 25, 25);
+    color: rgb(205, 205, 205);
+}
+
 .type-filter {
     padding: 5px;
     margin: 5px;
@@ -196,3 +229,12 @@ body {
 .chain-lock-rm-div { background-image: url('../img/spec_chainlockrm.png'); background-repeat: no-repeat; }
 .threshold-rm-div { background-image: url('../img/spec_thresholdrm.png'); background-repeat: no-repeat; }
 .cd-silence-rm-div { background-image: url('../img/spec_cdsilencerm.png'); background-repeat: no-repeat; }
+
+.specials-icon { 
+    background-image: url('../img/specials.png'); 
+    background-repeat: no-repeat; 
+    background-size: contain;
+    height: 20px;
+    width: 20px;
+    display: block;
+}
