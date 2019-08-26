@@ -7590,6 +7590,11 @@ var tm_boosters = {
             x_pts: 1.35,
             rec: ['1', '5_alt']
         },
+        {
+            // Pica
+            id: 2416,
+            x_pts: 1.35
+        },
         {   // Support Orlumbus
             id: 2436,
             x_pts: 1.35
