@@ -197,16 +197,16 @@ var tm_boss_info = {
     },
     2443: {
         1401: ['Gladius', 0, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> 6 Turn Despair, 3 Turn Damage Threshold (99% for Damage over 60k), Delay Immunity <br/>' +
-        '<span style="tooltip-title">HP < 50% (Once):</span> 4 Turn Resilience <br/>' +
-        '<span style="tooltip-title">HP < 20% (Once):</span> 80900 Damage <br/>' +
+        '<span class="tooltip-title">HP < 50% (Once):</span> 4 Turn Resilience <br/>' +
+        '<span class="tooltip-title">HP < 20% (Once):</span> 80900 Damage <br/>' +
         '</span>', 809000, 4000, 1, 0.1, 0.05, 1200, 0.1],
         1902: ['Pica', 1, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> Makes Non-PSY orbs count as badly matching for 20 turns, 50% HP Cut, 2 Hit Perfect Barrier, All Debuff Immunity <br/>' + 
-        '<span style="tooltip-title">On Death:</span> Recovers 300k Health, 4 Turn 300x Increased Defense, 4 Turn 1.5x ATK, Removes Perfect Barrier, Reduces CD to 1 <br/>' +
+        '<span class="tooltip-title">On Death:</span> Recovers 300k Health, 4 Turn 300x Increased Defense, 4 Turn 1.5x ATK, Removes Perfect Barrier, Reduces CD to 1 <br/>' +
         '</span>', 1030100, 6301, 2, 0.1, 0.05, 1200, 0.1],
         1906: ['Sugar', 2, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> Change all orbs to [BOMB], [TND], [EMPTY], 1.5x ATK Boost for Mobs, 2 Turn HP & [PSY] Barrier for Mobs <br/>' +
         '</span>', 480000, 1755, 1, 0.1, 0.05, 1200, 0.1],
         2144: ['Diamante', 3, '<span class="tooltiptext"><span class="tooltip-title">Preemptives:</span> 3 Turn Special Rewind for Top & Middle Row, 5 Turn Special Silence for Bottom Right Character, 10 Turn End of Turn Damage (5k) <br/>' + 
-        '<span style="tooltip-title">Turn 2:</span> Change to [QCK], 3 Turn 80% Damage Reduction from [DEX], Give all [EMPTY] orbs <br/>' +
+        '<span class="tooltip-title">Turn 2:</span> Change to [QCK], 3 Turn 80% Damage Reduction from [DEX], Give all [EMPTY] orbs <br/>' +
         '</span>', 730000, 4401, 2, 0.1, 0.05, 1200, 0.1],
         2443: ['Doflamingo', 4, '<span class="tooltiptext"><span class="tooltip-title">Stage 6:</span> <br/>' +
         '<span class="tooltip-title">Preemptives:</span> 1 Turn Special Silence, 4 Turn Bind for Bottom Row <br/>' +
@@ -216,7 +216,7 @@ var tm_boss_info = {
         '<span class="tooltip-title">Every Turn:</span> Gives all [BLOCK] orbs <br/>' +
         '<span class="tooltip-title">Every 3 Turns:</span> 3 Turn Anti-Heal, 4 Turn 1.5x ATK Boost, <br/>' +
         '<span class="tooltip-title">Interrupt (ATK Boost):</span> Clears buffs, 10 Turn Special Silence for all <br/>' +
-        '<span style="tooltip-title">HP < 20%:</span> 1600000 Damage <br/>' +
+        '<span class="tooltip-title">HP < 20%:</span> 1600000 Damage <br/>' +
         '</span>', 1100000, 4500, 1, 0.1, 0.05, 5000, 0.1]
     },
     2510: {
