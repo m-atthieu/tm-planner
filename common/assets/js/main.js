@@ -81,6 +81,15 @@ function getThumb(thumbId) {
     if (thumbId === 5045 || thumbId === 3359)
         return 'tm-planner/assets/img/new-thumbs/5045.png';
 
+    // Special case for LRR Blitz Akainu
+    //if(thumbId === 3363)
+
+    // Special case for LRR Blitz Aokiji
+    //if(thumbId === 3365)
+
+    // Special case for Duval (N)
+    //if(thumbId === 3368)
+
     // Special cases for new thumbs
     if (
         thumbId === 9999
