@@ -7602,12 +7602,24 @@ var tm_boosters = {
             id: 3365,
             x_pts: 1.35
         },
+        {   // LRR Pudding
+            id: 2431,
+            x_pts: 1.35
+        },
+        {   // LRR Kinemon
+            id: 2487,
+            x_pts: 1.35
+        },
         {   // Support Orlumbus
             id: 2436,
             x_pts: 1.35
         },
         {   // Support Dagama
             id: 2435,
+            x_pts: 1.35
+        },
+        {   // Raid Ace
+            id: 2394,
             x_pts: 1.35
         },
         {   // TM Doffy
