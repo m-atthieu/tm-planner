@@ -7941,8 +7941,8 @@ var tm_boosters = {
             type: 'fortnight',
             x_pts: 1.2
         },
-        {   // Ideo
-            id: 2419,
+        {   // Blue Gilly
+            id: 1766,
             type: 'fortnight',
             x_pts: 1.2
         },
