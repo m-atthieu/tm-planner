@@ -182,24 +182,16 @@ a[0]++}h.sigBytes=4*c;return h}});g.PBKDF2=function(d,b,e){return n.create(e).co
         (function( window, document, undefined ) {
 	        var image = new Image();
             image.onload = function() {
-                console.log('Opens Chrome Dev Tools Once');
-                // Inside here we already have the dimensions of the loaded image
+                console.log('%cOpens Chrome Dev Tools Once', 'font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;font-size: 16px ; font-weight: normal; line-height: 20px;');
+
                 var style = [
-                // Hacky way of forcing image's viewport using `font-size` and `line-height`
-                'font-size: 1px;',
-                'line-height: ' + this.height + 'px;',
-
-                // Hacky way of forcing a middle/center anchor point for the image
-                'padding: ' + this.height * .5 + 'px ' + this.width * .5 + 'px;',
-
-                // Set image dimensions
-                'background-size: ' + this.width + 'px ' + this.height + 'px;',
-
-                // Set image URL
-                'background: url(https://i.ytimg.com/vi/KEkrWRHCDQU/maxresdefault.jpg);'
+                    'font-size: 1px;',
+                    'line-height: ' + this.height + 'px;',
+                    'padding: ' + this.height * .5 + 'px ' + this.width * .5 + 'px;',
+                    'background-size: ' + this.width + 'px ' + this.height + 'px;',
+                    'background: url(https://i.ytimg.com/vi/KEkrWRHCDQU/maxresdefault.jpg);'
                 ].join(' ');
 
-                // notice the space after %c
                 console.log('%c ', style);
             };
 
