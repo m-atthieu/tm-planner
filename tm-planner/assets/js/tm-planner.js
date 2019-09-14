@@ -1644,7 +1644,7 @@ $(document).ready(function() {
 
             $(ui.draggable).data('team', -1);
             $(ui.draggable).addClass('assigned-dh');
-            if($(ui-draggable).hasClass('rec-char')) {
+            if($(ui.draggable).hasClass('rec-char')) {
                 $(ui.draggable).addClass('rec-char-dh');
             } else {
                 $(ui.draggable).addClass('rec-char-alt-dh');
