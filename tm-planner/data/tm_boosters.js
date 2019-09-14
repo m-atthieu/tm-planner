@@ -7931,6 +7931,21 @@ var tm_boosters = {
             x_pts: 1.2,
             rec: ['3']
         },
+        {   // Sanji
+            id: 2459,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Chiffon
+            id: 2458,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
+        {   // Pudding
+            id: 2457,
+            type: 'fortnight',
+            x_pts: 1.2
+        },
         {   // Baby 5
             id: 2165,
             type: 'fortnight',
