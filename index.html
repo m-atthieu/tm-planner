@@ -248,6 +248,9 @@
 		<span></span>
     </div>
     <div style="display: flex;justify-content: center;align-content: flex-end;">
+        <span id="titleText" style="display: none;position: absolute;z-index: 1;color:white;font-size:32px;">Knock all the characters off the platform for the password (maybe)</span>
+    </div>
+    <div>
         <div id="gameContainer" style="position:absolute;">
         </div>
     </div>
@@ -402,19 +405,19 @@ a[0]++}h.sigBytes=4*c;return h}});g.PBKDF2=function(d,b,e){return n.create(e).co
         function donate() {
             var n = Math.round(Math.random() * 9) + 1;
             
-            //if(n <= 5) { 
+            if(n <= 9) { 
                 document.getElementById('fallingJebait').style.display = 'block';
-            /*} else {
-                if(gameInitalized) {
-                    
-                } else {
+            } else {
+                if(!gameInitalized) {
                     gameInitalized = true;
                     initGame();
+                    document.getElementById('titleText').style.display = 'block';
                 }
-            }*/
+            }
         }
 
         function initGame() {
+            
             var Engine = Matter.Engine,
                 Render = Matter.Render,
                 Runner = Matter.Runner,
@@ -435,8 +438,8 @@ a[0]++}h.sigBytes=4*c;return h}});g.PBKDF2=function(d,b,e){return n.create(e).co
                 element: document.getElementById('gameContainer'),
                 engine: engine,
                 options: {
-                    width: 405,
-                    height: 300,
+                    width: window.innerWidth,
+                    height: window.innerHeight,
                     showAngleIndicator: true,
                     wireframes: false
                 }
@@ -497,12 +500,13 @@ a[0]++}h.sigBytes=4*c;return h}});g.PBKDF2=function(d,b,e){return n.create(e).co
             var wall2 = Bodies.rectangle(300, 150, 20, 200, { isStatic: true });
             var ceiling = Bodies.rectangle(210, 50, 200, 20, { isStatic: true });
 
-            var stack = Composites.stack(150, 100, 4, 4, 0, 0, function(x, y) {
+            var stack = Composites.stack(150, 120, 4, 4, 0, 0, function(x, y) {
                 var imgIndex = Math.round(Math.random() * 10) + 1;
                 var cubeOptions = {
+                    isStatic: true,
                     render: {
                         sprite: {
-                            texture: 'common/assets/img/chars/r' + imgIndex + '.png'
+                            texture: 'common/assets/img/chars/l' + imgIndex + '.png'
                         }
                     } 
                 };
@@ -583,6 +587,8 @@ a[0]++}h.sigBytes=4*c;return h}});g.PBKDF2=function(d,b,e){return n.create(e).co
                 successEl.style.display = "inline";
                 passEl.disabled = true;
                 submitPass.disabled = true;
+                document.getElementById('fallingJebait').style.display = 'none';
+                document.getElementById('gameContainer').style.display = 'block';
                 setTimeout(function() {
                     dialogWrap.style.display = "none";
                 }, 1000);
